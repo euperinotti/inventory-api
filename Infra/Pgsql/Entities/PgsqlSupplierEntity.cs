@@ -19,20 +19,6 @@ public class PgsqlSupplierEntity
         this.cnpj = cnpj;
         this.contact = contact;
         this.address = address;
-
-        Validate();
     }
 
-    private void Validate()
-    {
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new ArgumentException("Supplier name is required");
-        }
-
-        if (string.IsNullOrWhiteSpace(cnpj))
-        {
-            throw new ArgumentException("Supplier CNPJ is required");
-        }
-    }
 }
