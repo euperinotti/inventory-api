@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Config\" />
-    <Folder Include="Presentation\" />
   </ItemGroup>
 
 </Project>
