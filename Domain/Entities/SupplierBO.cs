@@ -1,14 +1,12 @@
 ﻿using System;
 namespace inventory_api.Domain.Entities;
-
-// ReSharper disable once InconsistentNaming
 public class SupplierBO
 {
-    public long? Id { get; set; }
-    public string Name { get; set; }
-    public string Cnpj { get; set; }
-    public string Address { get; set; }
-    public string Contact { get; set; }
+    public long? Id { get; private set; }
+    public string Name { get; private set; }
+    public string Cnpj { get; private set; }
+    public string Address { get; private set; }
+    public string Contact { get; private set; }
 
     public SupplierBO(long? id, string name, string cnpj, string address, string contact)
     {
