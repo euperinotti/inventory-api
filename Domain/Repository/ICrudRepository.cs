@@ -1,10 +1,10 @@
 namespace inventory_api.Domain.Repository;
-public interface ICrudRepository<T, K>
+public interface ICrudRepository<TEntity, TKey>
 {
-  IEnumerable<T> FindAll();
-  T? FindById(K id);
-  T Create(T supplier);
-  T? Update(T supplier);
-  void Delete(T supplier);
-  void Delete(K? id);
+  IEnumerable<TEntity> FindAll();
+  TEntity? FindById(TKey id);
+  TEntity Create(TEntity supplier);
+  TEntity? Update(TEntity supplier);
+  void Delete(TEntity supplier);
+  void Delete(TKey? id);
 }
