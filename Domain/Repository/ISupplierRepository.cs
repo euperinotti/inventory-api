@@ -1,6 +1,6 @@
-﻿using inventory_api.Domain.Entities;
+﻿using InventoryApi.Domain.Entities;
 
-namespace inventory_api.Domain.Repository;
+namespace InventoryApi.Domain.Repository;
 
 public interface ISupplierRepository : ICrudRepository<SupplierBO, long>
 {

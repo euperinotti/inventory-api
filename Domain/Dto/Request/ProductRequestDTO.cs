@@ -1,4 +1,4 @@
-﻿namespace inventory_api.Domain.Dto;
+﻿namespace InventoryApi.Domain.Dto.Request;
 
 public record ProductRequestDTO
 {

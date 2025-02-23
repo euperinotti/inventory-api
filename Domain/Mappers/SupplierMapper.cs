@@ -1,7 +1,7 @@
-﻿using inventory_api.Domain.Dto.Request;
-using inventory_api.Domain.Entities;
+﻿using InventoryApi.Domain.Entities;
+using InventoryApi.Domain.Dto.Request;
 
-namespace inventory_api.Domain.Mappers;
+namespace InventoryApi.Domain.Mappers;
 
 public class SupplierMapper
 {

@@ -1,4 +1,4 @@
-﻿namespace inventory_api.Domain;
+﻿namespace InventoryApi.Domain;
 
 public enum TransactionType
 {

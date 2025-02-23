@@ -1,4 +1,4 @@
-namespace inventory_api.Domain.Entities;
+namespace InventoryApi.Domain.Entities;
 
 public class ProductBO
 {
@@ -8,6 +8,7 @@ public class ProductBO
   public decimal Price { get; private set; }
   public int Quantity { get; private set; }
   public string ImageURL { get; private set; }
+  // public HashSet<ProductAttributeBO> Attributes { get; private set; }
   public SupplierBO Supplier { get; private set; }
 
   public ProductBO(long? id, string name, string description, decimal price, int quantity, string imageUrl, SupplierBO supplier)

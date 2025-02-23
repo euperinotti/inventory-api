@@ -1,4 +1,4 @@
-namespace inventory_api.Domain.Repository;
+namespace InventoryApi.Domain.Repository;
 public interface ICrudRepository<TEntity, TKey>
 {
   IEnumerable<TEntity> FindAll();

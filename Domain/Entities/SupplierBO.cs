@@ -1,5 +1,5 @@
 ﻿using System;
-namespace inventory_api.Domain.Entities;
+namespace InventoryApi.Domain.Entities;
 public class SupplierBO : AbstractEntityBO
 {
     public string Name { get; private set; }

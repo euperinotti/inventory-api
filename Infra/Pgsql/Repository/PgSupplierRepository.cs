@@ -1,7 +1,7 @@
-﻿using inventory_api.Domain.Entities;
-using inventory_api.Domain.Repository;
+﻿using InventoryApi.Domain.Entities;
+using InventoryApi.Domain.Repository;
 
-namespace inventory_api.Infra.Pgsql.Repository;
+namespace InventoryApi.Infra.Pgsql.Repository;
 
 public class PgSupplierRepository : ISupplierRepository
 {

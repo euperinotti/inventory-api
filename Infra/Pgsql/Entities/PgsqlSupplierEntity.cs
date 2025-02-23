@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace inventory_api.Infra.Pgsql.Entities;
+namespace InventoryApi.Infra.Pgsql.Entities;
 
 [Table("suppliers")]
 public class PgsqlSupplierEntity

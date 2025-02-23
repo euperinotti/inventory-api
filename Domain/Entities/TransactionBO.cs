@@ -1,4 +1,4 @@
-﻿namespace inventory_api.Domain.Entities;
+﻿namespace InventoryApi.Domain.Entities;
 
 public class TransactionBO
 {

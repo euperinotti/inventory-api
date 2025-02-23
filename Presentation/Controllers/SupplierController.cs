@@ -1,8 +1,8 @@
-﻿using inventory_api.Domain.Repository;
-using inventory_api.Presentation.Dtos.Supplier;
+﻿using InventoryApi.Domain.Repository;
+using InventoryApi.Presentation.Dtos.Supplier;
 using Microsoft.AspNetCore.Mvc;
 
-namespace inventory_api.Presentation.Controllers;
+namespace InventoryApi.Presentation.Controllers;
 
 [ApiController]
 [Route("[controller]")]
