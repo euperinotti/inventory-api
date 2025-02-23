@@ -1,4 +1,6 @@
 ﻿using System;
+using InventoryApi.Domain.Assertions;
+
 namespace InventoryApi.Domain.Entities;
 public class SupplierBO : AbstractEntityBO
 {
@@ -20,14 +22,8 @@ public class SupplierBO : AbstractEntityBO
 
     private void Validate()
     {
-        if (string.IsNullOrWhiteSpace(Name))
-        {
-            throw new ArgumentException("Supplier name is required");
-        }
-
-        if (string.IsNullOrWhiteSpace(Cnpj))
-        {
-            throw new ArgumentException("Supplier CNPJ is required");
-        }
+        Assert.IsNullOrWhiteSpace(Name, "Supplier name is required");
+        Assert.IsNullOrWhiteSpace(Contact, "Supplier contact is required");
+        Assert.IsNullOrWhiteSpace(Cnpj, "Supplier CNPJ is required");
     }
 }
