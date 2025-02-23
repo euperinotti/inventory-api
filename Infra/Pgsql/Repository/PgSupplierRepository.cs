@@ -3,9 +3,14 @@ using inventory_api.Domain.Repository;
 
 namespace inventory_api.Infra.Pgsql.Repository;
 
-public class PgsqlSupplierRepository : ISupplierRepository
+public class PgSupplierRepository : ISupplierRepository
 {
     public IEnumerable<SupplierBO> FindAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public SupplierBO? FindById(long id)
     {
         throw new NotImplementedException();
     }
@@ -26,6 +31,11 @@ public class PgsqlSupplierRepository : ISupplierRepository
     }
 
     public void Delete(SupplierBO supplier)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete(long id)
     {
         throw new NotImplementedException();
     }
