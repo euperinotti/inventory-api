@@ -1,13 +1,14 @@
 ﻿using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Dto.Request;
+using InventoryApi.Presentation.Dtos.Supplier;
 
 namespace InventoryApi.Domain.Mappers;
 
 public class SupplierMapper
 {
-    public static SupplierRequestDTO ToDTO(SupplierBO bo)
+    public static SupplierResponseDTO ToDTO(SupplierBO bo)
     {
-        SupplierRequestDTO dto = new SupplierRequestDTO();
+        SupplierResponseDTO dto = new SupplierResponseDTO();
         dto.Id = bo.Id;
         dto.CreatedAt = bo.CreatedAt;
         dto.UpdatedAt = bo.UpdatedAt;
