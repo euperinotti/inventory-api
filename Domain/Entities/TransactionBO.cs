@@ -1,4 +1,6 @@
-﻿namespace InventoryApi.Domain.Entities;
+﻿using InventoryApi.Domain.Assertions;
+
+namespace InventoryApi.Domain.Entities;
 
 public class TransactionBO
 {
@@ -23,7 +25,9 @@ public class TransactionBO
 
     public void Validate()
     {
-        // TODO: Validations
+        Assert.IsGreaterThan(Value, 0, "Transaction value must be greater than zero");
+        Assert.IsNotNull(Product, "Transaction must have a product");
+        Assert.IsNotNull(Order, "Transaction must have an order");
     }
 
 
