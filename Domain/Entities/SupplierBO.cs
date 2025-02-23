@@ -1,16 +1,15 @@
 ﻿using System;
 namespace inventory_api.Domain.Entities;
-public class SupplierBO
+public class SupplierBO : AbstractEntityBO
 {
-    public long? Id { get; private set; }
     public string Name { get; private set; }
     public string Cnpj { get; private set; }
     public string Address { get; private set; }
     public string Contact { get; private set; }
 
-    public SupplierBO(long? id, string name, string cnpj, string address, string contact)
+    public SupplierBO(long? id, string name, string cnpj, string address, string contact, DateTime createdAt, DateTime updatedAt) :
+        base(id, createdAt, updatedAt)
     {
-        Id = id;
         Name = name;
         Cnpj = cnpj;
         Address = address;
