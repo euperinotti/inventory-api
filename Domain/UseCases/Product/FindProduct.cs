@@ -1,5 +1,7 @@
 using InventoryApi.Domain.Assertions;
+using InventoryApi.Domain.Dto.Response;
 using InventoryApi.Domain.Entities;
+using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
 
 namespace InventoryApi.Domain.UseCases.Product;
@@ -13,11 +15,13 @@ public class FindProduct
         _repository = repository;
     }
 
-    public void Execute(long productId)
+    public ProductResponseDTO Execute(long productId)
     {
-        ProductBO bo = _repository.FindById(productId);
+        ProductBO? bo = _repository.FindById(productId);
 
         Assert.IsNull(bo, "Product not found");
+
+        return ProductMapper.ToDTO(bo);
     }
 
 }
