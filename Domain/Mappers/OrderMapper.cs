@@ -1,13 +1,14 @@
 ﻿using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Dto.Request;
+using InventoryApi.Domain.Dto.Response;
 
 namespace InventoryApi.Domain.Mappers;
 
 public static class OrderMapper
 {
-    public static OrderRequestDTO ToDTO(OrderBO bo)
+    public static OrderResponseDTO ToDTO(OrderBO bo)
     {
-        OrderRequestDTO dto = new OrderRequestDTO();
+        OrderResponseDTO dto = new OrderResponseDTO();
         dto.Id = bo.Id;
         dto.Date = bo.Date;
         dto.Status = bo.Status;
