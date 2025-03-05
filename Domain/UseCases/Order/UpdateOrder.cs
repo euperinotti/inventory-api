@@ -41,7 +41,7 @@ public class UpdateOrder
     private void CalculateAmount(OrderRequestDTO dto)
     {
         CalculateAmount calculateAmount = new CalculateAmount();
-        List<OrderItemBO> orderItems = dto.Items.Select(item => OrderItemMapper.ToBO(item)).ToList();
+        List<OrderItemBO> orderItems = dto.Items.Select(OrderItemMapper.ToBO).ToList();
 
         decimal amount = calculateAmount.Execute(orderItems);
 
