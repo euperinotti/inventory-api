@@ -13,9 +13,10 @@ public class CreateOrder
     private readonly IOrderRepository _orderRepository;
     private readonly ISupplierRepository _supplierRepository;
 
-    public CreateOrder(IOrderRepository orderRepository, ISupplierRepository _supplierRepository)
+    public CreateOrder(IOrderRepository orderRepository, ISupplierRepository supplierRepository)
     {
         _orderRepository = orderRepository;
+        _supplierRepository = supplierRepository;
     }
 
     public OrderResponseDTO Execute(OrderRequestDTO dto)
