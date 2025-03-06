@@ -1,3 +1,5 @@
+
+
 using InventoryApi.Domain;
 using InventoryApi.Domain.Entities;
 
