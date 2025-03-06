@@ -15,7 +15,49 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Services\" />
     <Folder Include="Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Presentation\Dtos\**" />
+    <Compile Remove="InventoryApi.Tests\**" />
+    <Compile Remove="Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Presentation\Dtos\**" />
+    <EmbeddedResource Remove="InventoryApi.Tests\**" />
+    <EmbeddedResource Remove="Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Presentation\Dtos\**" />
+    <Content Remove="InventoryApi.Tests\**" />
+    <Content Remove="Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Presentation\Dtos\**" />
+    <None Remove="InventoryApi.Tests\**" />
+    <None Remove="Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="InventoryApi.Tests\obj\InventoryApi.Tests.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="InventoryApi.Tests\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="InventoryApi.Tests\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="Tests\obj\InventoryApi.Tests.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="Tests\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="Tests\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="Tests\obj\Tests.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="Tests\bin\Debug\net8.0\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="Tests\bin\Debug\net8.0\appsettings.json" />
+    <_ContentIncludedByDefault Remove="Tests\bin\Debug\net8.0\InventoryApi.deps.json" />
+    <_ContentIncludedByDefault Remove="Tests\bin\Debug\net8.0\InventoryApi.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="Tests\bin\Debug\net8.0\Tests.deps.json" />
+    <_ContentIncludedByDefault Remove="Tests\bin\Debug\net8.0\Tests.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="Tests\obj\Debug\net8.0\Tests.sourcelink.json" />
   </ItemGroup>
 
 </Project>
