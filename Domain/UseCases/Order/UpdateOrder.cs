@@ -25,7 +25,7 @@ public class UpdateOrder
         CalculateAmount(dto);
 
         OrderBO bo = OrderMapper.ToBO(dto);
-        OrderBO created = _orderRepository.Create(bo);
+        OrderBO created = _orderRepository.Update(bo);
 
         return OrderMapper.ToDTO(created);
     }
