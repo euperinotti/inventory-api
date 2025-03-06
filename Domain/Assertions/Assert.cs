@@ -4,7 +4,7 @@ public static class Assert
 {
     public static void IsNull(object value, string message)
     {
-        if (value == null)
+        if (value != null)
         {
             throw new ArgumentNullException(message);
         }
@@ -12,7 +12,7 @@ public static class Assert
 
     public static void IsNotNull(object value, string message)
     {
-        if (value != null)
+        if (value == null)
         {
             throw new ArgumentNullException(message);
         }
@@ -68,7 +68,7 @@ public static class Assert
 
     public static void IsGreaterThanOrEqual<T>(T value, T limit, string message) where T : IComparable<T>
     {
-        if (value.CompareTo(limit) >= 0)
+        if (value.CompareTo(limit) < 0)
         {
             throw new ArgumentException(message);
         }

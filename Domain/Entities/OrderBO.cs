@@ -25,8 +25,8 @@ public class OrderBO : AbstractEntityBO
 
     private void Validate()
     {
-        Assert.IsNull(Supplier, "Order must have a supplier");
-        Assert.IsLessThan(Total, 0, "Total must be greater than zero");
+        Assert.IsNotNull(Supplier, "Order must have a supplier");
+        Assert.IsGreaterThanOrEqual(Total, 0, "Total must be greater than zero");
     }
 
     public void IncrementTotal(OrderItemBO orderItem)
