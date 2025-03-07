@@ -1,6 +1,6 @@
-﻿using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Dto.Request;
+﻿using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Dto.Response;
+using InventoryApi.Domain.Entities;
 
 namespace InventoryApi.Domain.Mappers;
 
@@ -37,6 +37,13 @@ public static class OrderMapper
     public static OrderBO ToBO(OrderRequestDTO dto)
     {
         List<OrderItemBO> items = dto.Items.Select(OrderItemMapper.ToBO).ToList();
-        return new OrderBO(dto.Id, dto.Date, dto.Status, items, dto.Total, null, dto.CreatedAt, dto.UpdatedAt);
+        return new OrderBO(dto.Id,
+            dto.Date,
+            dto.Status,
+            items,
+            dto.Total,
+            null,
+            dto.CreatedAt,
+            dto.UpdatedAt);
     }
 }
