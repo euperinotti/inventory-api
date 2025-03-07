@@ -4,9 +4,9 @@ namespace InventoryApi.Domain.Entities;
 
 public class UserBO : AbstractEntityBO
 {
-    public string Name { get; private set; }
-    public string Email { get; private set; }
-    public string Password { get; private set; }
+    private string _name;
+    private string _email;
+    private string _password;
 
     public UserBO(long? id, string name, string email, string password, DateTime createdAt, DateTime updatedAt) :
         base(id, DateTime.Now, DateTime.Now)
@@ -16,6 +16,24 @@ public class UserBO : AbstractEntityBO
         Password = password;
 
         Validate();
+    }
+
+    public string Name
+    {
+        get => _name;
+        private set => _name = value;
+    }
+
+    public string Email
+    {
+        get => _email;
+        private set => _email = value;
+    }
+
+    public string Password
+    {
+        get => _password;
+        private set => _password = value;
     }
 
     private void Validate()
