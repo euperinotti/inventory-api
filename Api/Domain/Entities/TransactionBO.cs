@@ -2,18 +2,17 @@
 
 namespace InventoryApi.Domain.Entities;
 
-public class TransactionBO
+public class TransactionBO : AbstractEntityBO
 {
-    public long? Id { get; private set; }
-    public DateTime Date { get; private set; }
-    public TransactionType Type { get; private set; }
-    public decimal Value { get; private set; }
-    public ProductBO Product { get; private set; }
-    public OrderBO Order { get; private set; }
+    private DateTime _date;
+    private TransactionType _type;
+    private decimal _value;
+    private ProductBO _product;
+    private OrderBO _order;
 
-    public TransactionBO(long? id, DateTime date, TransactionType type, decimal value, ProductBO product, OrderBO order)
+    public TransactionBO(long? id, DateTime date, TransactionType type, decimal value, ProductBO product, OrderBO order) :
+        base(id, DateTime.Now,  DateTime.Now)
     {
-        Id = id;
         Date = date;
         Type = type;
         Value = value;
@@ -23,7 +22,37 @@ public class TransactionBO
         Validate();
     }
 
-    public void Validate()
+    public DateTime Date
+    {
+        get => _date;
+        private set => _date = value;
+    }
+
+    public TransactionType Type
+    {
+        get => _type;
+        private set => _type = value;
+    }
+
+    public decimal Value
+    {
+        get => _value;
+        private set => _value = value;
+    }
+
+    public ProductBO Product
+    {
+        get => _product;
+        private set => _product = value;
+    }
+
+    public OrderBO Order
+    {
+        get => _order;
+        private set => _order = value;
+    }
+
+    private void Validate()
     {
         Assert.IsGreaterThan(Value, 0, "Transaction value must be greater than zero");
         Assert.IsNotNull(Product, "Transaction must have a product");
