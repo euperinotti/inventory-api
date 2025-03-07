@@ -1,4 +1,6 @@
-﻿namespace InventoryApi.Domain.Entities;
+﻿using InventoryApi.Domain.Assertions;
+
+namespace InventoryApi.Domain.Entities;
 
 public class UserBO : AbstractEntityBO
 {
@@ -12,5 +14,14 @@ public class UserBO : AbstractEntityBO
         Name = name;
         Email = email;
         Password = password;
+
+        Validate();
+    }
+
+    private void Validate()
+    {
+        Assert.IsNotNull(Name, "User must have a name");
+        Assert.IsNotNull(Email, "User must have an email");
+        Assert.IsNullOrWhiteSpace(Password, "User must have password");
     }
 }
