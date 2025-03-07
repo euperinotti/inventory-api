@@ -4,10 +4,10 @@ using InventoryApi.Domain.Assertions;
 namespace InventoryApi.Domain.Entities;
 public class SupplierBO : AbstractEntityBO
 {
-    public string Name { get; private set; }
-    public string Cnpj { get; private set; }
-    public string Address { get; private set; }
-    public string Contact { get; private set; }
+    private string _name;
+    private string _cnpj;
+    private string _address;
+    private string _contact;
 
     public SupplierBO(long? id, string name, string cnpj, string address, string contact, DateTime createdAt, DateTime updatedAt) :
         base(id, createdAt, updatedAt)
@@ -18,6 +18,30 @@ public class SupplierBO : AbstractEntityBO
         Contact = contact;
 
         Validate();
+    }
+
+    public string Name
+    {
+        get => _name;
+        private set => _name = value;
+    }
+
+    public string Cnpj
+    {
+        get => _cnpj;
+        private set => _cnpj = value;
+    }
+
+    public string Address
+    {
+        get => _address;
+        private set => _address = value;
+    }
+
+    public string Contact
+    {
+        get => _contact;
+        private set => _contact = value;
     }
 
     private void Validate()
