@@ -29,8 +29,42 @@ public class OrderBO : AbstractEntityBO
         Assert.IsGreaterThanOrEqual(Total, 0, "Total must be greater than zero");
     }
 
-    public void IncrementTotal(OrderItemBO orderItem)
+    public void UpdateOrder(OrderBO bo)
     {
-        Total += orderItem.Quantity * orderItem.UnitPrice;
+        Status = bo.Status;
+        Items = bo.Items;
+
+        UpdatedAtNow();
+        CalculateAmount();
+    }
+
+    public void AddItem(OrderItemBO orderItem)
+    {
+        OrderItemBO? item = Items.Find(e => orderItem.Product.Id == e.Product.Id);
+
+        if (item is not null)
+        {
+            item.AddQuantity(orderItem.Quantity);
+        }
+        else
+        {
+            Items.Add(orderItem);
+        }
+
+        CalculateAmount();
+    }
+
+    public void RemoveItem(OrderItemBO orderItem)
+    {
+        OrderItemBO? item = Items.Find(e => orderItem.Product.Id == e.Product.Id);
+
+        if (item is null)
+        {
+            return;
+        }
+
+        Items.Remove(item);
+
+        CalculateAmount();
     }
 }
