@@ -13,7 +13,7 @@ public static class OrderMapper
         dto.Date = bo.Date;
         dto.Status = bo.Status;
         dto.Total = bo.Total;
-        dto.SupplierId = (long) bo.Supplier.Id;
+        dto.Supplier = SupplierMapper.ToDTO(bo.Supplier);
         dto.CreatedAt = bo.CreatedAt;
         dto.UpdatedAt = bo.UpdatedAt;
 
@@ -27,7 +27,7 @@ public static class OrderMapper
         dto.Date = bo.Date;
         dto.Status = bo.Status;
         dto.Total = bo.Total;
-        dto.SupplierId = (long) bo.Supplier.Id;
+        dto.Supplier = SupplierMapper.ToRequestDTO(bo.Supplier);
         dto.CreatedAt = bo.CreatedAt;
         dto.UpdatedAt = bo.UpdatedAt;
 
@@ -37,12 +37,14 @@ public static class OrderMapper
     public static OrderBO ToBO(OrderRequestDTO dto)
     {
         List<OrderItemBO> items = dto.Items.Select(OrderItemMapper.ToBO).ToList();
+        SupplierBO supplier = SupplierMapper.ToBO(dto.Supplier);
+
         return new OrderBO(dto.Id,
             dto.Date,
             dto.Status,
             items,
             dto.Total,
-            null,
+            supplier,
             dto.CreatedAt,
             dto.UpdatedAt);
     }
