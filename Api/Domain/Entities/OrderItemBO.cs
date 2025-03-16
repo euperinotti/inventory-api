@@ -21,11 +21,21 @@ public class OrderItemBO
         Validate();
     }
 
-    public void Validate()
+    private void Validate()
     {
         Assert.IsNotNull(Product, "Order item must have a product");
         Assert.IsNotNull(Order, "Order item must have a parent order");
         Assert.IsGreaterThan(Quantity, 0, "Quantity must be greater than zero");
         Assert.IsGreaterThan(UnitPrice, 0, "Unit price must be greater than zero");
+    }
+
+    public void UpdateItem(OrderItemBO item)
+    {
+        Quantity = item.Quantity;
+    }
+
+    public void AddQuantity(int quantity)
+    {
+        Quantity += quantity;
     }
 }
