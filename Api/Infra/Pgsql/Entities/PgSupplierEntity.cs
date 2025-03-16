@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace InventoryApi.Infra.Pgsql.Entities;
 
 [Table("suppliers")]
-public class PgsqlSupplierEntity
+public class PgSupplierEntity
 {
     [Key] public long? id { get; private set; }
     public string name { get; private set; }
@@ -12,7 +12,7 @@ public class PgsqlSupplierEntity
     public string contact { get; private set; }
     public string address { get; private set; }
 
-    public PgsqlSupplierEntity(long? id, string name, string cnpj, string contact, string address)
+    public PgSupplierEntity(long? id, string name, string cnpj, string contact, string address)
     {
         this.id = id;
         this.name = name;
