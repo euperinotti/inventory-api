@@ -30,4 +30,9 @@ public abstract class AbstractEntityBO
         get => _updatedAt;
         private set => _updatedAt = value;
     }
+
+    public void UpdatedAtNow()
+    {
+        UpdatedAt = DateTime.Now;
+    }
 }
