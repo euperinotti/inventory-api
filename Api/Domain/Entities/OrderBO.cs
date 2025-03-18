@@ -4,12 +4,11 @@ namespace InventoryApi.Domain.Entities;
 
 public class OrderBO : AbstractEntityBO
 {
-    // TODO: Separate properties from attributes
-    public DateTime Date { get; private set; }
-    public OrderStatus Status { get; private set; }
-    public SupplierBO Supplier { get; private set; }
-    public List<OrderItemBO> Items { get; private set; }
-    public decimal Total { get; private set; }
+    private DateTime _date;
+    private OrderStatus _status;
+    private SupplierBO _supplier;
+    private List<OrderItemBO> _items;
+    private decimal _total;
 
     public OrderBO(long? id, DateTime date, OrderStatus status, List<OrderItemBO> items, decimal total,
         SupplierBO supplier, DateTime createdAt,
@@ -24,6 +23,12 @@ public class OrderBO : AbstractEntityBO
 
         Validate();
     }
+
+    public DateTime Date { get => _date; private set => _date = value; }
+    public OrderStatus Status { get => _status; private set => _status = value; }
+    public SupplierBO Supplier { get => _supplier; private set => _supplier = value; }
+    public List<OrderItemBO> Items { get => _items; private set => _items = value; }
+    public decimal Total { get => _total; private set => _total = value; }
 
     private void Validate()
     {
