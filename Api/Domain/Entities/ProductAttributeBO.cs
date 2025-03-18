@@ -1,4 +1,6 @@
-﻿namespace InventoryApi.Domain.Entities;
+﻿using InventoryApi.Domain.Assertions;
+
+namespace InventoryApi.Domain.Entities;
 
 public class ProductAttributeBO
 {
@@ -11,10 +13,13 @@ public class ProductAttributeBO
         Id = id;
         Key = key;
         Value = value;
+
+        Validate();
     }
 
-    public void Validate()
+    private void Validate()
     {
-        // TODO: Validations
+        Assert.IsNotNull(Key, "Product attribute must have a key");
+        Assert.IsNotNull(Value, "Product attribute must have a value");
     }
 }
