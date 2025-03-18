@@ -1,6 +1,5 @@
 using InventoryApi.Domain.Assertions;
 using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Dto.Response;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -28,7 +27,7 @@ public class AddToOrder
         _supplierRepository = supplierRepository;
     }
 
-    public OrderItemResponseDTO Execute(OrderItemRequestDTO itemDTO, OrderBO orderBO)
+    public OrderItemDTO Execute(OrderItemDTO itemDTO, OrderBO orderBO)
     {
         ValidateProduct(itemDTO);
         ValidateOrder(itemDTO, orderBO);
@@ -41,16 +40,16 @@ public class AddToOrder
         return OrderItemMapper.ToDTO(created);
     }
 
-    private void ValidateProduct(OrderItemRequestDTO itemDTO)
+    private void ValidateProduct(OrderItemDTO itemDTO)
     {
         FindProduct findProduct = new FindProduct(_productRepository);
         findProduct.Execute(itemDTO.ProductId);
     }
 
-    private void ValidateOrder(OrderItemRequestDTO itemDTO, OrderBO orderBO)
+    private void ValidateOrder(OrderItemDTO itemDTO, OrderBO orderBO)
     {
         FindOrder findOrder = new FindOrder(_orderRepository);
-        OrderResponseDTO attachedOrder = findOrder.Execute(itemDTO.OrderId);
+        OrderDTO attachedOrder = findOrder.Execute(itemDTO.OrderId);
 
         Assert.IsEqual(itemDTO.OrderId, (long) orderBO.Id, "Invalid order id");
     }
@@ -58,6 +57,6 @@ public class AddToOrder
     private void RecalculateTotal(OrderBO orderBO)
     {
         UpdateOrder updateOrder = new UpdateOrder(_orderRepository, _supplierRepository);
-        updateOrder.Execute(OrderMapper.ToRequestDTO(orderBO));
+        updateOrder.Execute(OrderMapper.ToDTO(orderBO));
     }
 }

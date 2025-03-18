@@ -1,5 +1,4 @@
 ﻿using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Dto.Response;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -18,10 +17,10 @@ public class UpdateProduct
     }
 
     // TODO: Implement mapping from response dto to bo
-    public ProductResponseDTO Execute(ProductRequestDTO product)
+    public ProductDTO Execute(ProductDTO product)
     {
         FindProduct usecase = new FindProduct(_repository);
-        ProductResponseDTO dto = usecase.Execute((long) product.Id);
+        ProductDTO dto = usecase.Execute((long) product.Id);
 
         ProductBO bo = ProductMapper.ToBO(product);
 
@@ -30,7 +29,7 @@ public class UpdateProduct
         return ProductMapper.ToDTO(created);
     }
 
-    public void Validate(ProductRequestDTO product)
+    private void Validate(ProductDTO product)
     {
         SupplierBO supplierBo = _supplierRepository.FindById(product.SupplierId);
     }

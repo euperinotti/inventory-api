@@ -1,3 +1,6 @@
+using InventoryApi.Application.Validators;
+using InventoryApi.Domain.Assertions;
+using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
@@ -15,9 +18,13 @@ public class UpdateSupplier
         _repository = repository;
     }
 
-    public SupplierResponseDTO Execute(SupplierRequestDTO dto)
+    public SupplierDTO Execute(SupplierDTO dto)
     {
-        SupplierBO bo = SupplierMapper.ToBO(dto);
+        Validate(dto);
+        SupplierBO bo = FindById((long) dto.Id);
+        SupplierBO newBo = SupplierMapper.ToBO(dto);
+
+        bo.UpdateSupplier(newBo);
 
         SupplierBO created = _repository.Create(bo);
 
@@ -25,8 +32,17 @@ public class UpdateSupplier
     }
 
     // TODO: Implement validate method
-    public void Validate(SupplierRequestDTO dto)
+    private void Validate(SupplierDTO dto)
     {
-        SupplierBO bo = _repository.FindById((long) dto.Id);
+        CnpjValidator cnpjValidator = new CnpjValidator();
+        cnpjValidator.Validate(dto.Cnpj);
+    }
+
+    private SupplierBO FindById(long id)
+    {
+        SupplierBO? bo = _repository.FindById(id);
+        Assert.IsNotNull(bo, "Supplier not found");
+
+        return bo;
     }
 }

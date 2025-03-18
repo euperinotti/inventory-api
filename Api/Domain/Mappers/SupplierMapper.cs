@@ -1,14 +1,14 @@
-﻿using InventoryApi.Domain.Entities;
+﻿using InventoryApi.Domain.Dto;
+using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Presentation.Dtos.Supplier;
 
 namespace InventoryApi.Domain.Mappers;
 
-public class SupplierMapper
+public static class SupplierMapper
 {
-    public static SupplierResponseDTO ToDTO(SupplierBO bo)
+    public static SupplierDTO ToDTO(SupplierBO bo)
     {
-        SupplierResponseDTO dto = new SupplierResponseDTO();
+        SupplierDTO dto = new SupplierDTO();
         dto.Id = bo.Id;
         dto.CreatedAt = bo.CreatedAt;
         dto.UpdatedAt = bo.UpdatedAt;
@@ -21,6 +21,11 @@ public class SupplierMapper
     }
 
     public static SupplierBO ToBO(SupplierRequestDTO dto)
+    {
+        return new SupplierBO(dto.Id, dto.Name, dto.Cnpj, dto.Address, dto.Contact, dto.CreatedAt, dto.UpdatedAt);
+    }
+
+    public static SupplierBO ToBO(SupplierDTO dto)
     {
         return new SupplierBO(dto.Id, dto.Name, dto.Cnpj, dto.Address, dto.Contact, dto.CreatedAt, dto.UpdatedAt);
     }

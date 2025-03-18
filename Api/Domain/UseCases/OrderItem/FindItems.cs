@@ -1,4 +1,4 @@
-using InventoryApi.Domain.Dto.Response;
+using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -17,7 +17,7 @@ public class FindItems
         _orderRepository = orderRepository;
     }
 
-    public List<OrderItemResponseDTO> Execute(long orderId)
+    public List<OrderItemDTO> Execute(long orderId)
     {
         FindOrder findOrder = new FindOrder(_orderRepository);
         findOrder.Execute(orderId);

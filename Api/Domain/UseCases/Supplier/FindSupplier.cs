@@ -1,4 +1,5 @@
 using InventoryApi.Domain.Assertions;
+using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -15,7 +16,7 @@ public class FindSupplier
         _repository = repository;
     }
 
-    public SupplierResponseDTO Execute(long supplierId)
+    public SupplierDTO Execute(long supplierId)
     {
         SupplierBO? bo = _repository.FindById(supplierId);
 

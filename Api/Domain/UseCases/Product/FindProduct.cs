@@ -1,5 +1,5 @@
 using InventoryApi.Domain.Assertions;
-using InventoryApi.Domain.Dto.Response;
+using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -15,7 +15,7 @@ public class FindProduct
         _repository = repository;
     }
 
-    public ProductResponseDTO Execute(long productId)
+    public ProductDTO Execute(long productId)
     {
         ProductBO? bo = _repository.FindById(productId);
 

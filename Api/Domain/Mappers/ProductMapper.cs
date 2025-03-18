@@ -6,12 +6,12 @@ namespace InventoryApi.Domain.Mappers;
 
 public static class ProductMapper
 {
-    public static ProductBO ToBO(ProductRequestDTO dto) {
-        return new ProductBO(dto.Id, dto.Name, dto.Description, dto.Price, dto.Quantity, dto.ImageURL, null);
+    public static ProductBO ToBO(ProductDTO dto) {
+        return new ProductBO(dto.Id, dto.Name, dto.Description, dto.Price, dto.Quantity, dto.ImageURL, SupplierMapper.ToBO(dto.Supplier));
     }
 
-    public static ProductResponseDTO ToDTO(ProductBO bo) {
-        ProductResponseDTO dto = new ProductResponseDTO();
+    public static ProductDTO ToDTO(ProductBO bo) {
+        ProductDTO dto = new ProductDTO();
 
         dto.Id = bo.Id;
         dto.Name = bo.Name;

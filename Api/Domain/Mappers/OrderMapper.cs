@@ -6,9 +6,9 @@ namespace InventoryApi.Domain.Mappers;
 
 public static class OrderMapper
 {
-    public static OrderResponseDTO ToDTO(OrderBO bo)
+    public static OrderDTO ToDTO(OrderBO bo)
     {
-        OrderResponseDTO dto = new OrderResponseDTO();
+        OrderDTO dto = new OrderDTO();
         dto.Id = bo.Id;
         dto.Date = bo.Date;
         dto.Status = bo.Status;
@@ -20,21 +20,7 @@ public static class OrderMapper
         return dto;
     }
 
-    public static OrderRequestDTO ToRequestDTO(OrderBO bo)
-    {
-        OrderRequestDTO dto = new OrderRequestDTO();
-        dto.Id = bo.Id;
-        dto.Date = bo.Date;
-        dto.Status = bo.Status;
-        dto.Total = bo.Total;
-        dto.Supplier = SupplierMapper.ToRequestDTO(bo.Supplier);
-        dto.CreatedAt = bo.CreatedAt;
-        dto.UpdatedAt = bo.UpdatedAt;
-
-        return dto;
-    }
-
-    public static OrderBO ToBO(OrderRequestDTO dto)
+    public static OrderBO ToBO(OrderDTO dto)
     {
         List<OrderItemBO> items = dto.Items.Select(OrderItemMapper.ToBO).ToList();
         SupplierBO supplier = SupplierMapper.ToBO(dto.Supplier);

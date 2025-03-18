@@ -1,6 +1,5 @@
 ﻿using InventoryApi.Domain.Assertions;
 using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Dto.Response;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -18,7 +17,7 @@ public class CreateProduct
         _supplierRepository = supplierRepository;
     }
 
-    public ProductResponseDTO Execute(ProductRequestDTO product)
+    public ProductDTO Execute(ProductDTO product)
     {
         Validate(product);
 
@@ -29,7 +28,7 @@ public class CreateProduct
         return ProductMapper.ToDTO(created);
     }
 
-    public void Validate(ProductRequestDTO product)
+    private void Validate(ProductDTO product)
     {
         SupplierBO? supplierBo = _supplierRepository.FindById(product.SupplierId);
         Assert.IsNull(supplierBo, "Supplier not found");

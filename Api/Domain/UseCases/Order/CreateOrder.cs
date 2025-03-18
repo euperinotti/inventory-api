@@ -1,9 +1,8 @@
+using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Dto.Response;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.UseCases.OrderItem;
 using InventoryApi.Domain.UseCases.Supplier;
 
 namespace InventoryApi.Domain.UseCases.Order;
@@ -19,7 +18,7 @@ public class CreateOrder
         _supplierRepository = supplierRepository;
     }
 
-    public OrderResponseDTO Execute(OrderRequestDTO dto)
+    public OrderDTO Execute(OrderDTO dto)
     {
         Validate(dto);
         CalculateAmount(dto);
@@ -30,15 +29,15 @@ public class CreateOrder
         return OrderMapper.ToDTO(created);
     }
 
-    private void Validate(OrderRequestDTO dto)
+    private void Validate(OrderDTO dto)
     {
         FindSupplier findSupplier = new FindSupplier(_supplierRepository);
-        findSupplier.Execute(dto.SupplierId);
+        SupplierDTO supplier = findSupplier.Execute((long) dto.Supplier.Id);
 
         dto.Status = OrderStatus.Pending;
     }
 
-    private void CalculateAmount(OrderRequestDTO dto)
+    private void CalculateAmount(OrderDTO dto)
     {
         CalculateAmount calculateAmount = new CalculateAmount();
         List<OrderItemBO> orderItems = dto.Items.Select(OrderItemMapper.ToBO).ToList();

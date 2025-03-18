@@ -1,8 +1,7 @@
-using InventoryApi.Domain.Dto.Request;
+using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
-using InventoryApi.Presentation.Dtos.Supplier;
 
 namespace InventoryApi.Domain.UseCases.Supplier;
 
@@ -15,7 +14,7 @@ public class CreateSupplier
         _repository = repository;
     }
 
-    public SupplierResponseDTO Execute(SupplierRequestDTO dto)
+    public SupplierDTO Execute(SupplierDTO dto)
     {
         SupplierBO bo = SupplierMapper.ToBO(dto);
 
@@ -25,7 +24,7 @@ public class CreateSupplier
     }
 
     // TODO: Implement validate method
-    public void Validate(SupplierRequestDTO dto)
+    public void Validate(SupplierDTO dto)
     {
 
     }

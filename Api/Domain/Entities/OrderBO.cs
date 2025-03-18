@@ -4,13 +4,15 @@ namespace InventoryApi.Domain.Entities;
 
 public class OrderBO : AbstractEntityBO
 {
+    // TODO: Separate properties from attributes
     public DateTime Date { get; private set; }
     public OrderStatus Status { get; private set; }
     public SupplierBO Supplier { get; private set; }
     public List<OrderItemBO> Items { get; private set; }
     public decimal Total { get; private set; }
 
-    public OrderBO(long? id, DateTime date, OrderStatus status, List<OrderItemBO> items, decimal total, SupplierBO supplier, DateTime createdAt,
+    public OrderBO(long? id, DateTime date, OrderStatus status, List<OrderItemBO> items, decimal total,
+        SupplierBO supplier, DateTime createdAt,
         DateTime updatedAt) :
         base(id, createdAt, updatedAt)
     {
@@ -67,4 +69,14 @@ public class OrderBO : AbstractEntityBO
 
         CalculateAmount();
     }
+
+    // TODO: Leave the calculation for the business object or the usecase?
+    public void CalculateAmount()
+    {
+        foreach (OrderItemBO item in Items)
+        {
+            Total += item.Quantity * item.UnitPrice;
+        }
+    }
+
 }
