@@ -22,7 +22,16 @@ public class FindSupplier
 
         Assert.IsNull(bo, "Supplier not found");
 
-        return SupplierMapper.ToDTO(bo);
+        return SupplierMapper.ToDTO(bo!);
+    }
+
+    public SupplierDTO Execute(string cnpj)
+    {
+        SupplierBO? bo = _repository.FindByCnpj(cnpj);
+
+        Assert.IsNull(bo, "Supplier not found");
+
+        return SupplierMapper.ToDTO(bo!);
     }
 
 }
