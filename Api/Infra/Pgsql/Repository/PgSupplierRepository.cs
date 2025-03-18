@@ -40,4 +40,8 @@ public class PgSupplierRepository : ISupplierRepository
         throw new NotImplementedException();
     }
 
+    public SupplierBO? FindByCnpj(string cnpj)
+    {
+        throw new NotImplementedException();
+    }
 }
