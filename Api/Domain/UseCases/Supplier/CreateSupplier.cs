@@ -1,3 +1,4 @@
+using InventoryApi.Domain.Assertions;
 using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
@@ -16,16 +17,17 @@ public class CreateSupplier
 
     public SupplierDTO Execute(SupplierDTO dto)
     {
+        Validate(dto);
         SupplierBO bo = SupplierMapper.ToBO(dto);
 
-        SupplierBO created = _repository.Create(bo);
+        bo = _repository.Create(bo);
 
-        return SupplierMapper.ToDTO(created);
+        return SupplierMapper.ToDTO(bo);
     }
 
-    // TODO: Implement validate method
-    public void Validate(SupplierDTO dto)
+    private void Validate(SupplierDTO dto)
     {
-
+        SupplierBO? supplierBo = _repository.FindByCnpj(dto.Cnpj);
+        Assert.IsNull(supplierBo, "Supplier already exists");
     }
 }
