@@ -47,4 +47,16 @@ public class ProductBO
 
         Validate();
     }
+
+    public void AddQuantity(int quantity)
+    {
+        Assert.IsGreaterThanOrEqual(quantity, 0, "Quantity must be greater or equal to zero");
+        Quantity += quantity;
+    }
+
+    public void ChangePrice(decimal price)
+    {
+        Assert.IsGreaterThanOrEqual(price, 0, "Price must be greater or equal to zero");
+        Price = price;
+    }
 }
