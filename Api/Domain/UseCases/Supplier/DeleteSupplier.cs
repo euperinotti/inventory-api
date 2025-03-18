@@ -18,8 +18,7 @@ public class DeleteSupplier
 
     public void Execute(long supplierId)
     {
-        SupplierBO bo = _repository.FindById((long) supplierId);
-
+        SupplierBO? bo = _repository.FindById(supplierId);
         Assert.IsNull(bo, "Supplier not found");
 
         _repository.Delete(supplierId);
