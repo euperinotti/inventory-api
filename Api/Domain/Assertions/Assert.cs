@@ -2,7 +2,7 @@
 
 public static class Assert
 {
-    public static void IsNull(object value, string message)
+    public static void IsNull(object? value, string message)
     {
         if (value != null)
         {
