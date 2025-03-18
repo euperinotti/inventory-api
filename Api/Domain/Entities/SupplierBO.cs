@@ -50,4 +50,14 @@ public class SupplierBO : AbstractEntityBO
         Assert.IsNullOrWhiteSpace(Contact, "Supplier contact is required");
         Assert.IsNullOrWhiteSpace(Cnpj, "Supplier CNPJ is required");
     }
+
+    public void UpdateSupplier(SupplierBO bo)
+    {
+        Name = bo.Name;
+        Cnpj = bo.Cnpj;
+        Address = bo.Address;
+        Contact = bo.Contact;
+
+        Validate();
+    }
 }
