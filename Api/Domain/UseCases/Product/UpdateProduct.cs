@@ -1,4 +1,5 @@
-﻿using InventoryApi.Domain.Dto.Request;
+﻿using InventoryApi.Domain.Assertions;
+using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -16,21 +17,32 @@ public class UpdateProduct
         _supplierRepository = supplierRepository;
     }
 
-    // TODO: Implement mapping from response dto to bo
-    public ProductDTO Execute(ProductDTO product)
+    public ProductDTO Execute(ProductDTO dto)
     {
-        FindProduct usecase = new FindProduct(_repository);
-        ProductDTO dto = usecase.Execute((long) product.Id);
+        Validate(dto);
+        ProductBO bo = FindProduct(dto);
 
-        ProductBO bo = ProductMapper.ToBO(product);
+        bo.UpdateProduct(ProductMapper.ToBO(dto));
 
-        ProductBO created = _repository.Create(bo);
+        bo = _repository.Create(bo);
 
-        return ProductMapper.ToDTO(created);
+        return ProductMapper.ToDTO(bo);
     }
 
-    private void Validate(ProductDTO product)
+    private void Validate(ProductDTO dto)
     {
-        SupplierBO supplierBo = _supplierRepository.FindById(product.SupplierId);
+        FindProduct findProduct = new FindProduct(_repository);
+        ProductDTO product = findProduct.Execute((long) dto.Id!);
+
+        dto = product;
+
+        SupplierBO? supplierBo = _supplierRepository.FindById(dto.SupplierId);
+        Assert.IsNotNull(supplierBo!, "Supplier not found");
+    }
+
+    private ProductBO FindProduct(ProductDTO dto)
+    {
+        FindProduct findProduct = new FindProduct(_repository);
+        return ProductMapper.ToBO(findProduct.Execute((long) dto.Id!));
     }
 }
