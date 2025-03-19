@@ -33,9 +33,10 @@ public class UpdateOrder
     private void Validate(OrderDTO dto)
     {
         FindSupplier findSupplier = new FindSupplier(_supplierRepository);
-        SupplierDTO supplier = findSupplier.Execute((long) dto.Supplier.Id);
+        SupplierDTO supplier = findSupplier.Execute((long) dto.Supplier.Id!);
 
         dto.Status = OrderStatus.Pending;
+        dto.Supplier = supplier;
     }
 
     private void CalculateAmount(OrderDTO dto)
