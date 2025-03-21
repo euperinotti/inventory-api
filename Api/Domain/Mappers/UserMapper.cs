@@ -19,7 +19,6 @@ public static class UserMapper
 
     public static UserBO ToBO(UserRequestDTO dto)
     {
-        // TODO: Arrumar questao do created e updated date time
         return new UserBO(dto.Id, dto.Name, dto.Email, dto.Password, DateTime.Now, DateTime.Now);
     }
 }

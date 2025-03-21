@@ -7,7 +7,6 @@ using InventoryApi.Domain.UseCases.Supplier;
 
 namespace InventoryApi.Domain.UseCases.Order;
 
-// TODO: Reevaluate usecase
 public class UpdateOrder
 {
     private readonly IOrderRepository _orderRepository;
