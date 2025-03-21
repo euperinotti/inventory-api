@@ -2,7 +2,7 @@ using InventoryApi.Domain.Assertions;
 
 namespace InventoryApi.Domain.Entities;
 
-public class OrderItemBO
+public class OrderItemBO : AbstractEntityBO<long?>
 {
     public long? Id { get; private set; }
     public ProductBO Product { get; private set; }
@@ -10,7 +10,8 @@ public class OrderItemBO
     public int Quantity { get; private set; }
     public decimal UnitPrice { get; private set; }
 
-    public OrderItemBO(long? id, ProductBO product, OrderBO order, int quantity, decimal unitPrice)
+    public OrderItemBO(long? id, ProductBO product, OrderBO order, int quantity, decimal unitPrice) :
+        base(id, DateTime.Now, DateTime.Now)
     {
         Id = id;
         Product = product;
