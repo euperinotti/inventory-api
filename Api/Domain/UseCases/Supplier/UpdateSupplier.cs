@@ -1,11 +1,9 @@
 using InventoryApi.Application.Validators;
 using InventoryApi.Domain.Assertions;
 using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
-using InventoryApi.Presentation.Dtos.Supplier;
 
 namespace InventoryApi.Domain.UseCases.Supplier;
 
@@ -20,8 +18,7 @@ public class UpdateSupplier
 
     public SupplierDTO Execute(SupplierDTO dto)
     {
-        Validate(dto);
-        SupplierBO bo = FindById((long) dto.Id);
+        SupplierBO bo = Validate(dto);
         SupplierBO newBo = SupplierMapper.ToBO(dto);
 
         bo.UpdateSupplier(newBo);
@@ -31,11 +28,21 @@ public class UpdateSupplier
         return SupplierMapper.ToDTO(created);
     }
 
-    // TODO: Implement validate method
-    private void Validate(SupplierDTO dto)
+    private SupplierBO Validate(SupplierDTO dto)
     {
         CnpjValidator cnpjValidator = new CnpjValidator();
         cnpjValidator.Validate(dto.Cnpj);
+
+        SupplierBO bo = FindById((long) dto.Id!);
+
+        SupplierBO? existingSupplier = _repository.FindByCnpj(dto.Cnpj);
+
+        if (existingSupplier != null && existingSupplier.Id != dto.Id)
+        {
+            throw new ArgumentException("A supplier with this CNPJ already exists.");
+        }
+
+        return bo;
     }
 
     private SupplierBO FindById(long id)
@@ -43,6 +50,6 @@ public class UpdateSupplier
         SupplierBO? bo = _repository.FindById(id);
         Assert.IsNotNull(bo, "Supplier not found");
 
-        return bo;
+        return bo!;
     }
 }
