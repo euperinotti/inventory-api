@@ -2,7 +2,7 @@
 
 namespace InventoryApi.Domain.Entities;
 
-public class UserBO : AbstractEntityBO
+public class UserBO : AbstractEntityBO<long?>
 {
     private string _name;
     private string _email;

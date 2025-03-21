@@ -2,7 +2,7 @@
 using InventoryApi.Domain.Assertions;
 
 namespace InventoryApi.Domain.Entities;
-public class SupplierBO : AbstractEntityBO
+public class SupplierBO : AbstractEntityBO<long?>
 {
     private string _name;
     private string _cnpj;

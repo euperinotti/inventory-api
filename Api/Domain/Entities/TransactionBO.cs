@@ -2,7 +2,7 @@
 
 namespace InventoryApi.Domain.Entities;
 
-public class TransactionBO : AbstractEntityBO
+public class TransactionBO : AbstractEntityBO<long?>
 {
     private DateTime _date;
     private TransactionType _type;

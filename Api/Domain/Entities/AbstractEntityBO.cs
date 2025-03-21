@@ -1,19 +1,19 @@
 ﻿namespace InventoryApi.Domain.Entities;
 
-public abstract class AbstractEntityBO
+public abstract class AbstractEntityBO<K>
 {
-    private long? _id;
+    private K? _id;
     private DateTime _createdAt;
     private DateTime _updatedAt;
 
-    protected AbstractEntityBO(long? id, DateTime createdAt, DateTime updatedAt)
+    protected AbstractEntityBO(K? id, DateTime createdAt, DateTime updatedAt)
     {
         Id = id;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
 
-    public long? Id
+    public K? Id
     {
         get => _id;
         private set => _id = value;
@@ -31,7 +31,7 @@ public abstract class AbstractEntityBO
         private set => _updatedAt = value;
     }
 
-    public void UpdatedAtNow()
+    protected void UpdatedAtNow()
     {
         UpdatedAt = DateTime.Now;
     }

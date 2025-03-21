@@ -2,7 +2,7 @@ using InventoryApi.Domain.Assertions;
 
 namespace InventoryApi.Domain.Entities;
 
-public class OrderBO : AbstractEntityBO
+public class OrderBO : AbstractEntityBO<long?>
 {
     private DateTime _date;
     private OrderStatus _status;
