@@ -7,7 +7,7 @@ using InventoryApi.Domain.Repository;
 using InventoryApi.Domain.Security;
 
 namespace InventoryApi.Domain.UseCases.User;
-// TODO: Implement
+
 public class SignUp
 {
     private readonly IUserRepository _repository;
