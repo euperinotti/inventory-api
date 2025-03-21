@@ -1,6 +1,7 @@
 using InventoryApi.Application.Dto.Request;
 using InventoryApi.Application.Dto.Response;
 using InventoryApi.Domain.Assertions;
+using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
@@ -19,7 +20,7 @@ public class SignUp
         _encrypter = encrypter;
     }
 
-    public UserResponseDTO Execute(UserRequestDTO dto)
+    public UserDTO Execute(UserDTO dto)
     {
         Validate(dto);
         EncryptPassword(dto);
@@ -30,13 +31,13 @@ public class SignUp
         return UserMapper.ToDTO(created);
     }
 
-    private void Validate(UserRequestDTO dto)
+    private void Validate(UserDTO dto)
     {
         UserBO? user = _repository.FindByEmail(dto.Email);
         Assert.IsNotNull(user, "This email is already registered");
     }
 
-    private void EncryptPassword(UserRequestDTO dto)
+    private void EncryptPassword(UserDTO dto)
     {
         string hashed = _encrypter.Hash(dto.Password);
         dto.Password = hashed;

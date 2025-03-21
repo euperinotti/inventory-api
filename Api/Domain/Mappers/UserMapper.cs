@@ -1,14 +1,15 @@
 ﻿using InventoryApi.Application.Dto.Request;
 using InventoryApi.Application.Dto.Response;
+using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;
 
 namespace InventoryApi.Domain.Mappers;
 
 public static class UserMapper
 {
-    public static UserResponseDTO ToDTO(UserBO bo)
+    public static UserDTO ToDTO(UserBO bo)
     {
-        UserResponseDTO dto = new UserResponseDTO();
+        UserDTO dto = new UserDTO();
         dto.Id = bo.Id;
         dto.Name = bo.Name;
         dto.Email = bo.Email;
@@ -17,7 +18,7 @@ public static class UserMapper
         return dto;
     }
 
-    public static UserBO ToBO(UserRequestDTO dto)
+    public static UserBO ToBO(UserDTO dto)
     {
         return new UserBO(dto.Id, dto.Name, dto.Email, dto.Password, DateTime.Now, DateTime.Now);
     }
