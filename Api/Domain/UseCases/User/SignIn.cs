@@ -6,6 +6,13 @@ using InventoryApi.Domain.Validators;
 namespace InventoryApi.Domain.UseCases.User;
 
 // TODO: Implement and search for details of implementation
+/**
+ * 1. Validate user credentials
+ * 2. Generate token
+ * 3. Send account confirmation email
+ * 4. Start session
+ * 5. Return token
+ */
 public class SignIn
 {
     private readonly IUserRepository _repository;
