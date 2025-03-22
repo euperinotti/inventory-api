@@ -1,13 +1,24 @@
-﻿using InventoryApi.Domain.Entities;
+﻿using InventoryApi.Config;
+using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Repository;
+using InventoryApi.Infra.Persistence.Pgsql.Mappers;
+using InventoryApi.Infra.Pgsql.Entities;
 
-namespace InventoryApi.Infra.Pgsql.Repository;
+namespace InventoryApi.Infra.Persistence.Pgsql.Repository;
 
 public class PgSupplierRepository : ISupplierRepository
 {
+    private readonly PostgresDbContext _context;
+
+    public PgSupplierRepository(PostgresDbContext context)
+    {
+        _context = context;
+    }
+
     public IEnumerable<SupplierBO> FindAll()
     {
-        throw new NotImplementedException();
+        IEnumerable<PgSupplierEntity> entities = _context.Suppliers.ToList();
+        return entities.Select(PgSupplierMapper.ToBO);
     }
 
     public SupplierBO? FindById(long id)
