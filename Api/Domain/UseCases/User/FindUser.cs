@@ -1,5 +1,4 @@
 using InventoryApi.Application.Dto.Request;
-using InventoryApi.Application.Dto.Response;
 using InventoryApi.Domain.Assertions;
 using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;

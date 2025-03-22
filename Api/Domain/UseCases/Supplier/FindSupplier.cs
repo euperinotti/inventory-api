@@ -3,7 +3,6 @@ using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
-using InventoryApi.Presentation.Dtos.Supplier;
 
 namespace InventoryApi.Domain.UseCases.Supplier;
 
