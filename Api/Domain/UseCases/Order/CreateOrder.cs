@@ -21,9 +21,10 @@ public class CreateOrder
     public OrderDTO Execute(OrderDTO dto)
     {
         Validate(dto);
-        CalculateAmount(dto);
 
         OrderBO bo = OrderMapper.ToBO(dto);
+        bo.CalculateAmount();
+
         OrderBO created = _orderRepository.Create(bo);
 
         return OrderMapper.ToDTO(created);
@@ -32,18 +33,9 @@ public class CreateOrder
     private void Validate(OrderDTO dto)
     {
         FindSupplier findSupplier = new FindSupplier(_supplierRepository);
-        SupplierDTO supplier = findSupplier.Execute((long) dto.Supplier.Id);
+        SupplierDTO supplier = findSupplier.Execute((long) dto.Supplier.Id!);
 
         dto.Status = OrderStatus.Pending;
-    }
-
-    private void CalculateAmount(OrderDTO dto)
-    {
-        CalculateAmount calculateAmount = new CalculateAmount();
-        List<OrderItemBO> orderItems = dto.Items.Select(OrderItemMapper.ToBO).ToList();
-
-        decimal amount = calculateAmount.Execute(orderItems);
-
-        dto.Total = amount;
+        dto.Supplier = supplier;
     }
 }

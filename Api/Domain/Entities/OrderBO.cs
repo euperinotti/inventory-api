@@ -74,8 +74,7 @@ public class OrderBO : AbstractEntityBO<long?>
 
         CalculateAmount();
     }
-
-    // TODO: Leave the calculation for the business object or the usecase?
+    
     public void CalculateAmount()
     {
         foreach (OrderItemBO item in Items)

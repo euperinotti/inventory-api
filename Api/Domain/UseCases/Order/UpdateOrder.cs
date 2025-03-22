@@ -1,9 +1,7 @@
-using InventoryApi.Domain.Dto;
 using InventoryApi.Domain.Dto.Request;
 using InventoryApi.Domain.Entities;
 using InventoryApi.Domain.Mappers;
 using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.UseCases.Supplier;
 
 namespace InventoryApi.Domain.UseCases.Order;
 
@@ -20,33 +18,18 @@ public class UpdateOrder
 
     public OrderDTO Execute(OrderDTO dto)
     {
-        Validate(dto);
-        CalculateAmount(dto);
+        FindOrder findOrder = new FindOrder(_orderRepository);
+        OrderDTO orderDto = findOrder.Execute((long) dto.Id!);
 
-        OrderBO bo = OrderMapper.ToBO(dto);
+        OrderBO bo = OrderMapper.ToBO(orderDto);
+        OrderBO newBO = OrderMapper.ToBO(dto);
+
+        bo.UpdateOrder(newBO);
         bo.CalculateAmount();
 
-        OrderBO created = _orderRepository.Update(bo);
+        bo = _orderRepository.Update(bo);
 
-        return OrderMapper.ToDTO(created);
+        return OrderMapper.ToDTO(bo);
     }
 
-    private void Validate(OrderDTO dto)
-    {
-        FindSupplier findSupplier = new FindSupplier(_supplierRepository);
-        SupplierDTO supplier = findSupplier.Execute((long) dto.Supplier.Id!);
-
-        dto.Status = OrderStatus.Pending;
-        dto.Supplier = supplier;
-    }
-
-    private void CalculateAmount(OrderDTO dto)
-    {
-        CalculateAmount calculateAmount = new CalculateAmount();
-        List<OrderItemBO> orderItems = dto.Items.Select(OrderItemMapper.ToBO).ToList();
-
-        decimal amount = calculateAmount.Execute(orderItems);
-
-        dto.Total = amount;
-    }
 }
