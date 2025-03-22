@@ -16,6 +16,12 @@ public class FindSupplier
         _repository = repository;
     }
 
+    public List<SupplierDTO> Execute()
+    {
+        IEnumerable<SupplierBO> suppliers = _repository.FindAll();
+        return suppliers.Select(SupplierMapper.ToDTO).ToList();
+    }
+
     public SupplierDTO Execute(long supplierId)
     {
         SupplierBO? bo = _repository.FindById(supplierId);
