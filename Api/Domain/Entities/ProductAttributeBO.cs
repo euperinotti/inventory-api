@@ -2,14 +2,13 @@
 
 namespace InventoryApi.Domain.Entities;
 
-public class ProductAttributeBO<T> : AbstractEntityBO<long?>
+public class ProductAttributeBO : AbstractEntityBO<long?>
 {
     public string Key { get; private set; }
-    public T Value { get; private set; }
-
+    public string Value { get; private set; }
     public string DataType { get; private set; }
 
-    public ProductAttributeBO(long? id, string key, T value, AttributeDataType dataType) :
+    public ProductAttributeBO(long? id, string key, string value, AttributeDataType dataType) :
         base(id, DateTime.Now, DateTime.Now)
     {
         Key = key;
