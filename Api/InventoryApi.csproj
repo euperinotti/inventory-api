@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Config\" />
+    <Folder Include="Infra\Persistence\" />
   </ItemGroup>
 
   <ItemGroup>
