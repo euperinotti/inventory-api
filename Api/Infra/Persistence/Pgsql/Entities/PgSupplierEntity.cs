@@ -6,19 +6,26 @@ namespace InventoryApi.Infra.Pgsql.Entities;
 [Table("suppliers")]
 public class PgSupplierEntity
 {
-    [Key] public long? id { get; private set; }
-    public string name { get; private set; }
-    public string cnpj { get; private set; }
-    public string contact { get; private set; }
-    public string address { get; private set; }
+    [Key] public long? Id { get; set; }
+    public string Name { get; set; }
+    public string Cnpj { get; set; }
+    public string Contact { get; set; }
+    public string Address { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
 
-    public PgSupplierEntity(long? id, string name, string cnpj, string contact, string address)
+    public PgSupplierEntity(long? id, string name, string cnpj, string contact, string address, DateTime createdAt, DateTime updatedAt)
     {
-        this.id = id;
-        this.name = name;
-        this.cnpj = cnpj;
-        this.contact = contact;
-        this.address = address;
+        this.Id = id;
+        this.Name = name;
+        this.Cnpj = cnpj;
+        this.Contact = contact;
+        this.Address = address;
+        this.CreatedAt = createdAt;
+        this.UpdatedAt = updatedAt;
     }
 
+    public PgSupplierEntity()
+    {
+    }
 }
