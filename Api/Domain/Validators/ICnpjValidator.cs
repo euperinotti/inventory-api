@@ -2,5 +2,5 @@
 
 public interface ICnpjValidator
 {
-    string Validate(string cnpj);
+    void Validate(string cnpj);
 }
