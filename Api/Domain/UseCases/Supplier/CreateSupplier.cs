@@ -1,10 +1,10 @@
-using InventoryApi.Domain.Assertions;
-using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Mappers;
-using InventoryApi.Domain.Repository;
+using Api.Domain.Assertions;
+using Api.Domain.Dto;
+using Api.Domain.Entities;
+using Api.Domain.Mappers;
+using Api.Domain.Repository;
 
-namespace InventoryApi.Domain.UseCases.Supplier;
+namespace Api.Domain.UseCases.Supplier;
 
 public class CreateSupplier
 {

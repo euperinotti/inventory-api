@@ -1,6 +1,6 @@
-namespace InventoryApi.Domain.UseCases.OrderItem;
+namespace Api.Domain.UseCases.OrderItem;
 
 public class RemoveFromOrder
 {
-    
+
 }

@@ -1,10 +1,10 @@
-using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Mappers;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.UseCases.Order;
+using Api.Domain.Dto.Request;
+using Api.Domain.Entities;
+using Api.Domain.Mappers;
+using Api.Domain.Repository;
+using Api.Domain.UseCases.Order;
 
-namespace InventoryApi.Domain.UseCases.OrderItem;
+namespace Api.Domain.UseCases.OrderItem;
 
 public class FindItems
 {

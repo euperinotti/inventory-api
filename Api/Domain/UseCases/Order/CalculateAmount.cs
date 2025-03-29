@@ -1,6 +1,6 @@
-using InventoryApi.Domain.Entities;
+using Api.Domain.Entities;
 
-namespace InventoryApi.Domain.UseCases.Order;
+namespace Api.Domain.UseCases.Order;
 
 public class CalculateAmount
 {

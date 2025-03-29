@@ -1,7 +1,7 @@
 ﻿using System;
-using InventoryApi.Domain.Assertions;
+using Api.Domain.Assertions;
 
-namespace InventoryApi.Domain.Entities;
+namespace Api.Domain.Entities;
 public class SupplierBO : AbstractEntityBO<long?>
 {
     private string _name;

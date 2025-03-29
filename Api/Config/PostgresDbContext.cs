@@ -1,7 +1,7 @@
-﻿using InventoryApi.Infra.Pgsql.Entities;
+﻿using Api.Infra.Pgsql.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace InventoryApi.Config;
+namespace Api.Config;
 
 public class PostgresDbContext : DbContext
 {

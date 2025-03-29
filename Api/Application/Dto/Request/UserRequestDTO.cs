@@ -1,4 +1,4 @@
-namespace InventoryApi.Application.Dto.Request;
+namespace Api.Application.Dto.Request;
 
 public class UserRequestDTO
 {

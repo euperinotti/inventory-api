@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Domain.Dto;
+﻿namespace Api.Domain.Dto;
 
 public class UserDTO
 {

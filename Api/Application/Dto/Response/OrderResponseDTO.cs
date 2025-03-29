@@ -1,6 +1,6 @@
-﻿using InventoryApi.Presentation.Dtos.Supplier;
+﻿using Api.Presentation.Dtos.Supplier;
 
-namespace InventoryApi.Domain.Dto.Response;
+namespace Api.Domain.Dto.Response;
 
 public record OrderResponseDTO
 {

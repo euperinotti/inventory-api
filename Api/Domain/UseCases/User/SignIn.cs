@@ -1,9 +1,9 @@
-using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.Security;
-using InventoryApi.Domain.Validators;
+using Api.Domain.Dto;
+using Api.Domain.Repository;
+using Api.Domain.Security;
+using Api.Domain.Validators;
 
-namespace InventoryApi.Domain.UseCases.User;
+namespace Api.Domain.UseCases.User;
 
 // TODO: Implement and search for details of implementation
 /**

@@ -1,5 +1,5 @@
-using InventoryApi.Domain;
-using InventoryApi.Domain.Entities;
+using Api.Domain;
+using Api.Domain.Entities;
 
 namespace Tests.Unit.Domain.Entities;
 
@@ -17,7 +17,7 @@ public class OrderBOTests
     [Test]
     public void Constructor_ShouldThrowIfTotalIsLowerThanZero()
     {
-        SupplierBO supplier = new SupplierBO(1, "Name", "100", "address", "contact", DateTime.Now, DateTime.Now);
+        SupplierBO supplier = new SupplierBO(1, "Name", "100", "Address", "Contact", DateTime.Now, DateTime.Now);
 
         Assert.Throws<ArgumentException>(() =>
         {

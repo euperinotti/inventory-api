@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Domain.Entities;
+﻿namespace Api.Domain.Entities;
 
 public abstract class AbstractEntityBO<K>
 {

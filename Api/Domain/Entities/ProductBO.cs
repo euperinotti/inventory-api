@@ -1,6 +1,6 @@
-using InventoryApi.Domain.Assertions;
+using Api.Domain.Assertions;
 
-namespace InventoryApi.Domain.Entities;
+namespace Api.Domain.Entities;
 
 public class ProductBO
 {

@@ -1,6 +1,6 @@
-namespace InventoryApi.Domain.UseCases.Order;
+namespace Api.Domain.UseCases.Order;
 
 public class DeleteOrder
 {
-    
+
 }

@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Application.Validators;
+﻿namespace Api.Application.Validators;
 
 // TODO: Implement CnpjValidator
 public class CnpjValidator

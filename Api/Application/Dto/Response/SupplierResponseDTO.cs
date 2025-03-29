@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Presentation.Dtos.Supplier;
+﻿namespace Api.Presentation.Dtos.Supplier;
 
 public class SupplierResponseDTO
 {

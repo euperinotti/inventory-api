@@ -1,10 +1,10 @@
-﻿using InventoryApi.Config;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Infra.Persistence.Pgsql.Mappers;
-using InventoryApi.Infra.Pgsql.Entities;
+﻿using Api.Config;
+using Api.Domain.Entities;
+using Api.Domain.Repository;
+using Api.Infra.Persistence.Pgsql.Mappers;
+using Api.Infra.Pgsql.Entities;
 
-namespace InventoryApi.Infra.Persistence.Pgsql.Repository;
+namespace Api.Infra.Persistence.Pgsql.Repository;
 
 public class PgSupplierRepository : ISupplierRepository
 {
@@ -23,36 +23,49 @@ public class PgSupplierRepository : ISupplierRepository
 
     public SupplierBO? FindById(long id)
     {
-        throw new NotImplementedException();
-    }
-
-    public SupplierBO? FindById(int id)
-    {
-        throw new NotImplementedException();
+        PgSupplierEntity? entity = _context.Suppliers.FirstOrDefault(e => e.Id == id);
+        return entity == null ? null : PgSupplierMapper.ToBO(entity);
     }
 
     public SupplierBO Create(SupplierBO supplier)
     {
-        throw new NotImplementedException();
+        PgSupplierEntity entity = PgSupplierMapper.ToEntity(supplier);
+        _context.Suppliers.Add(entity);
+        _context.SaveChanges();
+        return PgSupplierMapper.ToBO(entity);
     }
 
     public SupplierBO? Update(SupplierBO supplier)
     {
-        throw new NotImplementedException();
+        PgSupplierEntity entity = PgSupplierMapper.ToEntity(supplier);
+        _context.Suppliers.Update(entity);
+        _context.SaveChanges();
+        return PgSupplierMapper.ToBO(entity);
     }
 
     public void Delete(SupplierBO supplier)
     {
-        throw new NotImplementedException();
+        PgSupplierEntity entity = PgSupplierMapper.ToEntity(supplier);
+        bool exists = _context.Suppliers.Any(item => item.Equals(entity));
+
+        if (!exists) return;
+
+        _context.Suppliers.Remove(entity);
+        _context.SaveChanges();
     }
 
     public void Delete(long id)
     {
-        throw new NotImplementedException();
+        SupplierBO? bo = FindById(id);
+
+        if (bo == null) return;
+
+        Delete(bo);
     }
 
     public SupplierBO? FindByCnpj(string cnpj)
     {
-        throw new NotImplementedException();
+        PgSupplierEntity entity = _context.Suppliers.FirstOrDefault(item => item.Cnpj.Equals(cnpj));
+        return entity == null ? null : PgSupplierMapper.ToBO(entity);
     }
 }

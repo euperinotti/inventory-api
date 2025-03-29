@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Domain.Assertions;
+﻿namespace Api.Domain.Assertions;
 
 public static class Assert
 {

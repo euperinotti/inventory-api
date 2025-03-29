@@ -1,11 +1,11 @@
-using InventoryApi.Application.Dto.Request;
-using InventoryApi.Domain.Assertions;
-using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Mappers;
-using InventoryApi.Domain.Repository;
+using Api.Application.Dto.Request;
+using Api.Domain.Assertions;
+using Api.Domain.Dto;
+using Api.Domain.Entities;
+using Api.Domain.Mappers;
+using Api.Domain.Repository;
 
-namespace InventoryApi.Domain.UseCases.User;
+namespace Api.Domain.UseCases.User;
 
 public class FindUser
 {

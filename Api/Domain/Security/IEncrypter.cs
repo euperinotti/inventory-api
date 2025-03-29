@@ -1,4 +1,4 @@
-namespace InventoryApi.Domain.Security;
+namespace Api.Domain.Security;
 
 public interface IEncrypter
 {

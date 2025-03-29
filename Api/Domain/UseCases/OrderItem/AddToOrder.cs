@@ -1,12 +1,12 @@
-using InventoryApi.Domain.Assertions;
-using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Mappers;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.UseCases.Order;
-using InventoryApi.Domain.UseCases.Product;
+using Api.Domain.Assertions;
+using Api.Domain.Dto.Request;
+using Api.Domain.Entities;
+using Api.Domain.Mappers;
+using Api.Domain.Repository;
+using Api.Domain.UseCases.Order;
+using Api.Domain.UseCases.Product;
 
-namespace InventoryApi.Domain.UseCases.OrderItem;
+namespace Api.Domain.UseCases.OrderItem;
 
 public class AddToOrder
 {

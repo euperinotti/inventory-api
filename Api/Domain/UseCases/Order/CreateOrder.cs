@@ -1,11 +1,11 @@
-using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Mappers;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.UseCases.Supplier;
+using Api.Domain.Dto;
+using Api.Domain.Dto.Request;
+using Api.Domain.Entities;
+using Api.Domain.Mappers;
+using Api.Domain.Repository;
+using Api.Domain.UseCases.Supplier;
 
-namespace InventoryApi.Domain.UseCases.Order;
+namespace Api.Domain.UseCases.Order;
 
 public class CreateOrder
 {

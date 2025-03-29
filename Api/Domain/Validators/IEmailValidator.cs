@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Domain.Validators;
+﻿namespace Api.Domain.Validators;
 
 public interface IEmailValidator
 {

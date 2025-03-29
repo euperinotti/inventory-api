@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Domain.Dto.Response;
+﻿namespace Api.Domain.Dto.Response;
 
 public record OrderItemResponseDTO
 {

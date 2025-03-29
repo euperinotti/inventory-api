@@ -1,4 +1,4 @@
-﻿namespace InventoryApi.Domain.Dto.Request;
+﻿namespace Api.Domain.Dto.Request;
 
 public class OrderItemRequestDTO
 {

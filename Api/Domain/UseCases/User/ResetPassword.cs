@@ -1,7 +1,7 @@
-﻿namespace InventoryApi.Domain.UseCases.User;
+﻿namespace Api.Domain.UseCases.User;
 
 // TODO: Implement
 public class ResetPassword
 {
-    
+
 }

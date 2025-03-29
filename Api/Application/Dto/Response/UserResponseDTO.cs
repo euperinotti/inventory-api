@@ -1,4 +1,4 @@
-namespace InventoryApi.Application.Dto.Response;
+namespace Api.Application.Dto.Response;
 
 public class UserResponseDTO
 {

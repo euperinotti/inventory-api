@@ -1,6 +1,6 @@
-using InventoryApi.Domain.Assertions;
+using Api.Domain.Assertions;
 
-namespace InventoryApi.Domain.Entities;
+namespace Api.Domain.Entities;
 
 public class OrderBO : AbstractEntityBO<long?>
 {
@@ -74,7 +74,7 @@ public class OrderBO : AbstractEntityBO<long?>
 
         CalculateAmount();
     }
-    
+
     public void CalculateAmount()
     {
         foreach (OrderItemBO item in Items)

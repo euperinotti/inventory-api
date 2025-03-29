@@ -1,4 +1,4 @@
-using InventoryApi.Config;
+using Api.Config;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

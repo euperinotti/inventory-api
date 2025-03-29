@@ -1,8 +1,8 @@
-﻿using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Infra.Pgsql.Entities;
+﻿using Api.Domain.Dto.Request;
+using Api.Domain.Entities;
+using Api.Infra.Pgsql.Entities;
 
-namespace InventoryApi.Infra.Persistence.Pgsql.Mappers;
+namespace Api.Infra.Persistence.Pgsql.Mappers;
 
 public static class PgSupplierMapper
 {

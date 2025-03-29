@@ -1,11 +1,11 @@
-using InventoryApi.Domain.Assertions;
-using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Mappers;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.Security;
+using Api.Domain.Assertions;
+using Api.Domain.Dto;
+using Api.Domain.Entities;
+using Api.Domain.Mappers;
+using Api.Domain.Repository;
+using Api.Domain.Security;
 
-namespace InventoryApi.Domain.UseCases.User;
+namespace Api.Domain.UseCases.User;
 
 public class SignUp
 {

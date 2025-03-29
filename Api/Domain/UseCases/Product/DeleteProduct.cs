@@ -1,8 +1,8 @@
-using InventoryApi.Domain.Assertions;
-using InventoryApi.Domain.Entities;
-using InventoryApi.Domain.Repository;
+using Api.Domain.Assertions;
+using Api.Domain.Entities;
+using Api.Domain.Repository;
 
-namespace InventoryApi.Domain.UseCases.Product;
+namespace Api.Domain.UseCases.Product;
 
 public class DeleteProduct
 {

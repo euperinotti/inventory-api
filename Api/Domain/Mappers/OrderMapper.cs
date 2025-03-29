@@ -1,8 +1,8 @@
-﻿using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Dto.Response;
-using InventoryApi.Domain.Entities;
+﻿using Api.Domain.Dto.Request;
+using Api.Domain.Dto.Response;
+using Api.Domain.Entities;
 
-namespace InventoryApi.Domain.Mappers;
+namespace Api.Domain.Mappers;
 
 public static class OrderMapper
 {

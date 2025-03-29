@@ -1,9 +1,9 @@
-﻿using InventoryApi.Application.Dto.Request;
-using InventoryApi.Application.Dto.Response;
-using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Entities;
+﻿using Api.Application.Dto.Request;
+using Api.Application.Dto.Response;
+using Api.Domain.Dto;
+using Api.Domain.Entities;
 
-namespace InventoryApi.Domain.Mappers;
+namespace Api.Domain.Mappers;
 
 public static class UserMapper
 {

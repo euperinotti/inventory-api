@@ -1,9 +1,9 @@
-﻿using InventoryApi.Domain.Dto;
-using InventoryApi.Domain.Dto.Request;
-using InventoryApi.Domain.Repository;
-using InventoryApi.Domain.UseCases.Supplier;
+﻿using Api.Domain.Dto;
+using Api.Domain.Dto.Request;
+using Api.Domain.Repository;
+using Api.Domain.UseCases.Supplier;
 
-namespace InventoryApi.Application.Services;
+namespace Api.Application.Services;
 
 public class SupplierService
 {
