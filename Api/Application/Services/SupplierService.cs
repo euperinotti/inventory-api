@@ -2,6 +2,7 @@
 using Api.Domain.Dto.Request;
 using Api.Domain.Repository;
 using Api.Domain.UseCases.Supplier;
+using Api.Infra.Validators;
 
 namespace Api.Application.Services;
 
@@ -16,7 +17,7 @@ public class SupplierService
 
     public SupplierDTO Update(SupplierDTO dto)
     {
-        UpdateSupplier usecase = new UpdateSupplier(_supplierRepository);
+        UpdateSupplier usecase = new UpdateSupplier(_supplierRepository, new CnpjValidator());
 
         return usecase.Execute(dto);
     }
