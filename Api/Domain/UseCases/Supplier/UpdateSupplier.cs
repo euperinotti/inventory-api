@@ -1,19 +1,21 @@
-using Api.Application.Validators;
 using Api.Domain.Assertions;
 using Api.Domain.Dto;
 using Api.Domain.Entities;
 using Api.Domain.Mappers;
 using Api.Domain.Repository;
+using Api.Domain.Validators;
 
 namespace Api.Domain.UseCases.Supplier;
 
 public class UpdateSupplier
 {
     private readonly ISupplierRepository _repository;
+    private readonly ICnpjValidator _cnpjValidator;
 
-    public UpdateSupplier(ISupplierRepository repository)
+    public UpdateSupplier(ISupplierRepository repository, ICnpjValidator cnpjValidator)
     {
         _repository = repository;
+        _cnpjValidator = cnpjValidator;
     }
 
     public SupplierDTO Execute(SupplierDTO dto)
@@ -30,8 +32,7 @@ public class UpdateSupplier
 
     private SupplierBO Validate(SupplierDTO dto)
     {
-        CnpjValidator cnpjValidator = new CnpjValidator();
-        cnpjValidator.Validate(dto.Cnpj);
+        _cnpjValidator.Validate(dto.Cnpj);
 
         SupplierBO bo = FindById((long) dto.Id!);
 
