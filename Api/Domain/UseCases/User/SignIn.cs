@@ -1,6 +1,7 @@
 using Api.Domain.Assertions;
 using Api.Domain.Dto;
 using Api.Domain.Entities;
+using Api.Domain.Mappers;
 using Api.Domain.Repository;
 using Api.Domain.Security;
 using Api.Domain.Validators;
@@ -37,9 +38,10 @@ public class SignIn
 
         string token = _jwtAuth.GenerateToken(user!);
 
-        InitiateSession(user!, token);
+        UserDTO response = UserMapper.ToDTO(user!);
+        response.Token = token;
 
-        return null;
+        return response;
     }
 
     private void Validate(UserDTO dto)
