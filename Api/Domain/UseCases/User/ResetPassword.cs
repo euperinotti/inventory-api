@@ -14,10 +14,11 @@ public class ResetPassword
     private readonly IEncrypter _encrypter;
     private readonly IPasswordValidator _validator;
 
-    public ResetPassword(IUserRepository repository, IEncrypter encrypter)
+    public ResetPassword(IUserRepository repository, IEncrypter encrypter, IPasswordValidator validator)
     {
         _repository = repository;
         _encrypter = encrypter;
+        _validator = validator;
     }
 
     public void Execute(UserDTO dto)
@@ -29,8 +30,8 @@ public class ResetPassword
         _validator.Validate(dto.Password);
 
         dto.Password = _encrypter.Hash(dto.Password);
-        user.ResetPassword(dto.Password);
+        user!.ResetPassword(dto.Password);
 
-        _repository.Update(user!);
+        _repository.Update(user);
     }
 }
