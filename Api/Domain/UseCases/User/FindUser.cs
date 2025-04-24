@@ -28,7 +28,7 @@ public class FindUser
         UserBO? bo = _repository.FindById((long) dto.Id);
         Assert.IsNotNull(bo, "User not found");
 
-        return UserMapper.ToDTO(bo);
+        return UserMapper.ToDTO(bo!);
     }
 
     public UserDTO ExecuteByEmail(UserRequestDTO dto)
@@ -36,7 +36,7 @@ public class FindUser
         UserBO? bo = _repository.FindByEmail(dto.Email);
         Assert.IsNotNull(bo, "User not found");
 
-        return UserMapper.ToDTO(bo);
+        return UserMapper.ToDTO(bo!);
     }
 
 }
