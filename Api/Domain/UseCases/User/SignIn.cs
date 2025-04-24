@@ -11,14 +11,11 @@ namespace Api.Domain.UseCases.User;
 /**
  * 1. Validate user credentials - OK
  * 2. Generate token - OK
- * 3. Send account confirmation email
- * 4. Start session
- * 5. Return token
+ * 3. Return token - OK
  */
 public class SignIn
 {
     private readonly IUserRepository _repository;
-    private readonly IUserSessionRepository _userSessionRepository;
     private readonly IEncrypter _encrypter;
     private readonly IEmailValidator _emailValidator;
     private readonly IJWTAuth _jwtAuth;
@@ -50,13 +47,5 @@ public class SignIn
         string password = _encrypter.Hash(dto.Password);
         dto.Password = password;
         _emailValidator.Validate(dto.Email);
-    }
-
-    private void InitiateSession(UserBO user, string token)
-    {
-        UserSessionBO session = UserSessionBO.NewSession(user);
-        session.AttemptLogin();
-
-        UserSessionBO lastSession = _userSessionRepository.FindLastSession(user.Id!);
     }
 }
