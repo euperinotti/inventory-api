@@ -42,4 +42,9 @@ public class UserBO : AbstractEntityBO<long?>
         Assert.IsNotNull(Email, "User must have an email");
         Assert.IsNullOrWhiteSpace(Password, "User must have password");
     }
+
+    public void ResetPassword(string newPassword)
+    {
+        Password = newPassword;
+    }
 }
