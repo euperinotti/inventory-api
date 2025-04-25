@@ -1,5 +1,5 @@
-using Api.Domain;
 using Api.Domain.Entities;
+using Api.Domain.Enums;
 
 namespace Tests.Unit.Domain.Entities;
 
