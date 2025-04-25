@@ -21,7 +21,7 @@ public static class Assert
             return;
         }
 
-        throw new ArgumentNullException(message);
+        throw new AssertException(message);
     }
 
     public static void IsTrue(bool condition, string message)

@@ -26,4 +26,26 @@ public class AssertTest
             DomainAssert.IsNull(obj1, "Object must be null");
         });
     }
+
+    [Test]
+    public void IsNotNull_ShouldNotThrowWhenObjectIsNotNull()
+    {
+        object obj1 = new string("hello");
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsNotNull(obj1, "Object must not be null");
+        });
+    }
+
+    [Test]
+    public void IsNotNull_ShouldThrowWhenObjectIsNull()
+    {
+        object obj1 = null;
+
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsNotNull(obj1, "Object must not be null");
+        });
+    }
 }
