@@ -43,6 +43,11 @@ public class UserBO : AbstractEntityBO<long?>
         Assert.IsNullOrWhiteSpace(Password, "User must have password");
     }
 
+    public void Update(UserBO bo)
+    {
+        Name = bo.Name;
+    }
+
     public void ResetPassword(string newPassword)
     {
         Password = newPassword;
