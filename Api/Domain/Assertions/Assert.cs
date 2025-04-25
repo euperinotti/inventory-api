@@ -41,7 +41,7 @@ public static class Assert
             return;
         }
 
-        throw new ArgumentException(message);
+        throw new AssertException(message);
     }
 
     public static void IsNullOrEmpty(string value, string message)

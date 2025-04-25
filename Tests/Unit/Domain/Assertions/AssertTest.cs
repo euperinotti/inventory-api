@@ -66,4 +66,22 @@ public class AssertTest
             DomainAssert.IsTrue(1 == 2, "Condition must be true");
         });
     }
+
+    [Test]
+    public void IsFalse_ShouldNotThrowWhenConditionIsFalse()
+    {
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsFalse(1 != 1, "Condition must be false");
+        });
+    }
+
+    [Test]
+    public void IsFalse_ShouldThrowWhenConditionIsNotFalse()
+    {
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsFalse(1 == 1, "Condition must be true");
+        });
+    }
 }
