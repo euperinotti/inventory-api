@@ -134,4 +134,32 @@ public class AssertTest
             DomainAssert.IsNullOrWhiteSpace(value, "Value must be null or a white spaced string");
         });
     }
+
+    [Test]
+    public void IsGreaterThan_ShouldNotThrowWhenValueIsGreaterThanTheOtherValue()
+    {
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsGreaterThan(20, 10, "Value 2 must be grater than value 1");
+        });
+    }
+
+    [Test]
+    public void IsGreaterThan_ShouldThrowWhenValuesAreEqual()
+    {
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsGreaterThan(10, 10, "Value 2 must be grater than value 1");
+        });
+    }
+
+    [Test]
+    public void IsGreaterThan_ShouldThrowWhenValueIsLessThanTheOtherValue()
+    {
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsGreaterThan(5, 10, "Value 2 must be grater than value 1");
+        });
+    }
+
 }
