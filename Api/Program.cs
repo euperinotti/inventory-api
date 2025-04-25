@@ -1,4 +1,5 @@
-using Api.Config;
+using Api.Config.Middlewares;
+using Api.Infra.Persistence.Pgsql.Config;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

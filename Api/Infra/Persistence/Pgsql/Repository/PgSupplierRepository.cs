@@ -1,6 +1,7 @@
 ﻿using Api.Config;
 using Api.Domain.Entities;
 using Api.Domain.Repository;
+using Api.Infra.Persistence.Pgsql.Config;
 using Api.Infra.Persistence.Pgsql.Mappers;
 using Api.Infra.Pgsql.Entities;
 

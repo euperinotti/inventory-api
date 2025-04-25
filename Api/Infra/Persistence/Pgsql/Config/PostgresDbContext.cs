@@ -1,7 +1,7 @@
 ﻿using Api.Infra.Pgsql.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Api.Config;
+namespace Api.Infra.Persistence.Pgsql.Config;
 
 public class PostgresDbContext : DbContext
 {
