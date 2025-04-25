@@ -162,4 +162,31 @@ public class AssertTest
         });
     }
 
+    [Test]
+    public void IsGreaterThanOrEqual_ShouldNotThrowWhenValueIsGreaterThanTheOtherValue()
+    {
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsGreaterThanOrEqual(20, 10, "Value 2 must be grater than value 1");
+        });
+    }
+
+    [Test]
+    public void IsGreaterThanOrEqual_ShouldNotThrowWhenValuesAreEqual()
+    {
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsGreaterThanOrEqual(10, 10, "Value 2 must be grater than value 1");
+        });
+    }
+
+    [Test]
+    public void IsGreaterThanOrEqual_ShouldThrowWhenValueIsLessThanTheOtherValue()
+    {
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsGreaterThanOrEqual(5, 10, "Value 2 must be grater than value 1");
+        });
+    }
+
 }
