@@ -4,7 +4,6 @@ namespace Api.Domain.Entities;
 
 public class OrderItemBO : AbstractEntityBO<long?>
 {
-    public long? Id { get; private set; }
     public ProductBO Product { get; private set; }
     public OrderBO Order { get; private set; }
     public int Quantity { get; private set; }
@@ -13,7 +12,6 @@ public class OrderItemBO : AbstractEntityBO<long?>
     public OrderItemBO(long? id, ProductBO product, OrderBO order, int quantity, decimal unitPrice) :
         base(id, DateTime.Now, DateTime.Now)
     {
-        Id = id;
         Product = product;
         Order = order;
         Quantity = quantity;

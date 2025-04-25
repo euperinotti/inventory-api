@@ -22,8 +22,7 @@ public class DeleteProduct
 
     private void ValidateExisting(long productId)
     {
-        ProductBO bo = _repository.FindById(productId);
-
+        ProductBO? bo = _repository.FindById(productId);
         Assert.IsNull(bo, "Product not found");
     }
 }

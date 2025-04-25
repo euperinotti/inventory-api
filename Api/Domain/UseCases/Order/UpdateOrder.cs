@@ -8,12 +8,10 @@ namespace Api.Domain.UseCases.Order;
 public class UpdateOrder
 {
     private readonly IOrderRepository _orderRepository;
-    private readonly ISupplierRepository _supplierRepository;
 
-    public UpdateOrder(IOrderRepository orderRepository, ISupplierRepository supplierRepository)
+    public UpdateOrder(IOrderRepository orderRepository)
     {
         _orderRepository = orderRepository;
-        _supplierRepository = supplierRepository;
     }
 
     public OrderDTO Execute(OrderDTO dto)

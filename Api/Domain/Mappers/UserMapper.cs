@@ -1,6 +1,4 @@
-﻿using Api.Application.Dto.Request;
-using Api.Application.Dto.Response;
-using Api.Domain.Dto;
+﻿using Api.Domain.Dto;
 using Api.Domain.Entities;
 
 namespace Api.Domain.Mappers;

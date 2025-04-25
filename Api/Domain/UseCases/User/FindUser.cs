@@ -25,7 +25,7 @@ public class FindUser
 
     public UserDTO ExecuteById(UserRequestDTO dto)
     {
-        UserBO? bo = _repository.FindById((long) dto.Id);
+        UserBO? bo = _repository.FindById((long) dto.Id!);
         Assert.IsNotNull(bo, "User not found");
 
         return UserMapper.ToDTO(bo!);

@@ -1,4 +1,6 @@
-﻿namespace Api.Domain.Dto.Request;
+﻿using Api.Domain.Enums;
+
+namespace Api.Domain.Dto.Request;
 
 public record OrderDTO
 {

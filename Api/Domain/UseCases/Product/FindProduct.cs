@@ -21,7 +21,7 @@ public class FindProduct
 
         Assert.IsNull(bo, "Product not found");
 
-        return ProductMapper.ToDTO(bo);
+        return ProductMapper.ToDTO(bo!);
     }
 
 }

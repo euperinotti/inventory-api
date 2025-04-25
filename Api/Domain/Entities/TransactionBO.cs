@@ -1,4 +1,5 @@
 ﻿using Api.Domain.Assertions;
+using Api.Domain.Enums;
 
 namespace Api.Domain.Entities;
 

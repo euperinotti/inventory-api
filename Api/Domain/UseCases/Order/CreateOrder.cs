@@ -1,6 +1,7 @@
 using Api.Domain.Dto;
 using Api.Domain.Dto.Request;
 using Api.Domain.Entities;
+using Api.Domain.Enums;
 using Api.Domain.Mappers;
 using Api.Domain.Repository;
 using Api.Domain.UseCases.Supplier;

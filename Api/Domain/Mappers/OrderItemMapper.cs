@@ -9,8 +9,8 @@ public static class OrderItemMapper
     {
         OrderItemDTO dto = new OrderItemDTO();
         dto.Id = bo.Id;
-        dto.ProductId = (long) bo.Product.Id;
-        dto.OrderId = (long) bo.Order.Id;
+        dto.ProductId = bo.Product?.Id;
+        dto.OrderId = bo.Order?.Id;
         dto.Quantity = bo.Quantity;
         dto.UnitPrice = bo.UnitPrice;
 
@@ -19,6 +19,6 @@ public static class OrderItemMapper
 
     public static OrderItemBO ToBO(OrderItemDTO dto)
     {
-        return new OrderItemBO(dto.Id, null, null, dto.Quantity, dto.UnitPrice);
+        return new OrderItemBO(dto.Id, ProductMapper.ToBO(dto.Product), OrderMapper.ToBO(dto.Order), dto.Quantity, dto.UnitPrice);
     }
 }

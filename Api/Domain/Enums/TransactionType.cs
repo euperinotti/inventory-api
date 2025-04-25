@@ -1,4 +1,4 @@
-﻿namespace Api.Domain;
+﻿namespace Api.Domain.Enums;
 
 public enum TransactionType
 {

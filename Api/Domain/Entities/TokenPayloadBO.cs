@@ -10,7 +10,7 @@ public class TokenPayloadBO {
 
   public DateTime ExpiresAt { get; private set; }
 
-  public TokenPayloadBO(string email, string password, DateTime createdAt, DateTime lastLoginAt, int attempts, int expiresIn) {
+  private TokenPayloadBO(string email, string password, DateTime createdAt, DateTime lastLoginAt, int attempts, int expiresIn) {
     Email = email;
     Password = password;
     CreatedAt = createdAt;

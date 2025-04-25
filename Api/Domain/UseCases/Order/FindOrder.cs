@@ -20,6 +20,6 @@ public class FindOrder
         OrderBO? bo = _orderRepository.FindById(orderId);
         Assert.IsNull(bo, "Order not found");
 
-        return OrderMapper.ToDTO(bo);
+        return OrderMapper.ToDTO(bo!);
     }
 }

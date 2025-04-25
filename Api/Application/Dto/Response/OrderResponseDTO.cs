@@ -1,4 +1,5 @@
-﻿using Api.Presentation.Dtos.Supplier;
+﻿using Api.Domain.Enums;
+using Api.Presentation.Dtos.Supplier;
 
 namespace Api.Domain.Dto.Response;
 

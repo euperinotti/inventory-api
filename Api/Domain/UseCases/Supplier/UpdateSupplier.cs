@@ -23,7 +23,7 @@ public class UpdateSupplier
         SupplierBO bo = Validate(dto);
         SupplierBO newBo = SupplierMapper.ToBO(dto);
 
-        bo.UpdateSupplier(newBo);
+        bo.Update(newBo);
 
         SupplierBO created = _repository.Create(bo);
 
