@@ -1,4 +1,6 @@
-﻿namespace Api.Domain.Assertions;
+﻿using Api.Domain.Exceptions;
+
+namespace Api.Domain.Assertions;
 
 public static class Assert
 {
@@ -9,7 +11,7 @@ public static class Assert
             return;
         }
 
-        throw new ArgumentNullException(message);
+        throw new AssertException(message);
     }
 
     public static void IsNotNull(object? value, string message)
