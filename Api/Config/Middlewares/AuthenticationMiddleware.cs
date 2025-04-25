@@ -4,11 +4,12 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Config.Middlewares;
 
-// TODO: Revisar
 public class AuthenticationMiddleware
 {
-    public void Configure(IServiceCollection services)
+    public void Configure(IServiceCollection services, IConfiguration configuration)
     {
+        JwtSettings jwtSettings = LoadJwtSettings(configuration);
+
         services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -22,10 +23,25 @@ public class AuthenticationMiddleware
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "your_issuer",
-                    ValidAudience = "your_audience",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key"))
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret!))
                 };
             });
+    }
+
+    private JwtSettings LoadJwtSettings(IConfiguration configuration)
+    {
+        Dictionary<string, string?> jwtSettings =
+            configuration.GetSection("Jwt").GetChildren().ToDictionary(key => key.Key, value => value.Value);
+
+        return new JwtSettings(jwtSettings);
+    }
+
+    private class JwtSettings(Dictionary<string, string?> jwtSettings)
+    {
+        public string? Issuer { get; set; } = jwtSettings["Issuer"];
+        public string? Audience { get; set; } = jwtSettings["Audience"];
+        public string? Secret { get; set; } = jwtSettings["Secret"];
     }
 }
