@@ -84,4 +84,24 @@ public class AssertTest
             DomainAssert.IsFalse(1 == 1, "Condition must be true");
         });
     }
+
+    [Test]
+    public void IsNullOrEmpty_ShouldNotThrowWhenValueIsNullOrEmpty()
+    {
+        string value = null;
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsNullOrEmpty(value, "Value must be null or an empty string");
+        });
+    }
+
+    [Test]
+    public void IsNullOrEmpty_ShouldThrowWhenValueIsNotNullOrEmpty()
+    {
+        string value = "string";
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsNullOrEmpty(value, "Value must be null or an empty string");
+        });
+    }
 }

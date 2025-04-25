@@ -51,7 +51,7 @@ public static class Assert
             return;
         }
 
-        throw new ArgumentException(message);
+        throw new AssertException(message);
     }
 
     public static void IsNullOrWhiteSpace(string value, string message)
