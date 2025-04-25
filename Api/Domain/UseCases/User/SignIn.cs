@@ -8,12 +8,6 @@ using Api.Domain.Validators;
 
 namespace Api.Domain.UseCases.User;
 
-// TODO: Implement and search for details of implementation
-/**
- * 1. Validate user credentials - OK
- * 2. Generate token - OK
- * 3. Return token - OK
- */
 public class SignIn
 {
     private readonly IUserRepository _repository;
@@ -48,6 +42,7 @@ public class SignIn
     {
         string password = _encrypter.Hash(dto.Password);
         dto.Password = password;
+
         _emailValidator.Validate(dto.Email);
     }
 }
