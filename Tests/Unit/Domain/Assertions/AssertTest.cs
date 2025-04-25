@@ -189,4 +189,124 @@ public class AssertTest
         });
     }
 
+    [Test]
+    public void IsEqual_ShouldNotThrowWhenValuesAreEqual()
+    {
+        string value = "string";
+        string other = "string";
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldNotThrowWhenValuesAreEqual_2()
+    {
+        int value = 5;
+        int other = 5;
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldNotThrowWhenValuesAreEqual_3()
+    {
+        bool value = true;
+        bool other = true;
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldNotThrowWhenValuesAreEqual_4()
+    {
+        int value = 5;
+        float other = 5.0F;
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldNotThrowWhenObjectsAreEqual()
+    {
+        string value = "string";
+        string other = value;
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldNotThrowWhenObjectsAreEqual_2()
+    {
+        int value = 5;
+        int other = value;
+
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldThrowWhenValuesAreDifferent()
+    {
+        string value = "string";
+        string other = "another";
+
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldThrowWhenValuesAreDifferent_2()
+    {
+        int value = 2;
+        int other = 3;
+
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldThrowWhenValuesAreDifferent_3()
+    {
+        bool value = true;
+        bool other = false;
+
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
+    [Test]
+    public void IsEqual_ShouldThrowWhenValuesAreDifferent_4()
+    {
+        int value = 1;
+        float other = 5.7F;
+
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsEqual(value, other, "Values are not equal");
+        });
+    }
+
 }

@@ -121,7 +121,7 @@ public static class Assert
             return;
         }
 
-        throw new ArgumentException(message);
+        throw new AssertException(message);
     }
 
     public static void IsNotEqual<T>(T value1, T value2, string message) where T : IComparable<T>
