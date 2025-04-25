@@ -10,6 +10,7 @@ namespace Api.Domain.UseCases.User;
 public class UpdateUser
 {
     private readonly IUserRepository _repository;
+    // TODO: Move this validations to a UserValidator class?
     private readonly IEmailValidator _emailValidator;
     private readonly IPasswordValidator _passwordValidator;
 

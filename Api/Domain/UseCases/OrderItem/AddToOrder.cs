@@ -8,6 +8,7 @@ using Api.Domain.UseCases.Product;
 
 namespace Api.Domain.UseCases.OrderItem;
 
+// TOOD: Fix use case dependency
 public class AddToOrder
 {
     private readonly IOrderItemRepository _repository;
@@ -42,21 +43,25 @@ public class AddToOrder
 
     private void ValidateProduct(OrderItemDTO itemDTO)
     {
+        Assert.IsNotNull(itemDTO.ProductId, "Product Id must not be null");
+
         FindProduct findProduct = new FindProduct(_productRepository);
-        findProduct.Execute(itemDTO.ProductId);
+        findProduct.Execute((long) itemDTO.ProductId!);
     }
 
     private void ValidateOrder(OrderItemDTO itemDTO, OrderBO orderBO)
     {
-        FindOrder findOrder = new FindOrder(_orderRepository);
-        OrderDTO attachedOrder = findOrder.Execute(itemDTO.OrderId);
+        Assert.IsNotNull(itemDTO.OrderId, "Order Id must not be null");
 
-        Assert.IsEqual(itemDTO.OrderId, (long) orderBO.Id, "Invalid order id");
+        FindOrder findOrder = new FindOrder(_orderRepository);
+        OrderDTO attachedOrder = findOrder.Execute((long) itemDTO.OrderId!);
+
+        Assert.IsEqual((long) itemDTO.OrderId, (long) orderBO.Id!, "Invalid order id");
     }
 
     private void RecalculateTotal(OrderBO orderBO)
     {
-        UpdateOrder updateOrder = new UpdateOrder(_orderRepository, _supplierRepository);
+        UpdateOrder updateOrder = new UpdateOrder(_orderRepository);
         updateOrder.Execute(OrderMapper.ToDTO(orderBO));
     }
 }
