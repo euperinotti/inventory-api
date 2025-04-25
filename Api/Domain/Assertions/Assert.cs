@@ -61,7 +61,7 @@ public static class Assert
             return;
         }
 
-        throw new ArgumentException(message);
+        throw new AssertException(message);
     }
 
     public static void IsGreaterThan<T>(T value, T limit, string message) where T : IComparable<T>

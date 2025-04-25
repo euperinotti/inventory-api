@@ -104,4 +104,34 @@ public class AssertTest
             DomainAssert.IsNullOrEmpty(value, "Value must be null or an empty string");
         });
     }
+
+    [Test]
+    public void IsNullOrWhiteSpace_ShouldNotThrowWhenValueIsNull()
+    {
+        string value = null;
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsNullOrWhiteSpace(value, "Value must be null or a white spaced string");
+        });
+    }
+
+    [Test]
+    public void IsNullOrWhiteSpace_ShouldNotThrowWhenValueIsWhiteSpace()
+    {
+        string value = "      ";
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsNullOrWhiteSpace(value, "Value must be null or a white spaced string");
+        });
+    }
+
+    [Test]
+    public void IsNullOrWhiteSpace_ShouldThrowWhenValueIsNotNullOrWhiteSpace()
+    {
+        string value = "string";
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsNullOrWhiteSpace(value, "Value must be null or a white spaced string");
+        });
+    }
 }
