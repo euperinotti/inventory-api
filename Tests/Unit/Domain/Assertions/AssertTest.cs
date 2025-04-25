@@ -309,4 +309,20 @@ public class AssertTest
         });
     }
 
+    [TestCase(""),
+     TestCase("http"),
+     TestCase("http://."),
+     TestCase("http://test"),
+     TestCase("http:/ /test"),
+     TestCase("http ://test"),
+     TestCase("hello://test")
+    ]
+    public void IsHttpUrl_ShouldThrowWhenInvalidUrlIsGiven(string url)
+    {
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsHttpUrl(url, "Not a valid URL");
+        });
+    }
+
 }

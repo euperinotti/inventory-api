@@ -176,11 +176,12 @@ public static class Assert
 
     public static void IsHttpUrl(string url, string message)
     {
-        if (Uri.IsWellFormedUriString(url, UriKind.Absolute))
+        bool created = Uri.TryCreate(url, UriKind.Absolute, out Uri? uriResult);
+
+        if (!created || (uriResult?.Scheme != Uri.UriSchemeHttp && uriResult?.Scheme != Uri.UriSchemeHttps))
         {
-            return;
+            throw new AssertException(message);
         }
 
-        throw new ArgumentException(message);
     }
 }
