@@ -7,7 +7,6 @@ using Api.Domain.Validators;
 
 namespace Api.Domain.UseCases.User;
 
-// TODO: Implement
 public class ResetPassword
 {
     private readonly IUserRepository _repository;
@@ -21,16 +20,16 @@ public class ResetPassword
         _validator = validator;
     }
 
-    public void Execute(UserDTO dto)
+    public void Execute(ResetPasswordDTO dto)
     {
-        UserBO? user = _repository.FindByCredentials(dto.Email, dto.Password);
+        UserBO? user = _repository.FindByCredentials(dto.Email, dto.OldPassword);
 
         Assert.IsNotNull(user, "User not found");
 
-        _validator.Validate(dto.Password);
+        _validator.Validate(dto.NewPassword);
 
-        dto.Password = _encrypter.Hash(dto.Password);
-        user!.ResetPassword(dto.Password);
+        dto.NewPassword = _encrypter.Hash(dto.NewPassword);
+        user!.ResetPassword(dto.NewPassword);
 
         _repository.Update(user);
     }
