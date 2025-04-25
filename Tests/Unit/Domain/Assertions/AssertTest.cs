@@ -39,13 +39,31 @@ public class AssertTest
     }
 
     [Test]
-    public void IsNotNull_ShouldThrowWhenObjectIsNull()
+    public void IsNotNull_ShouldThrowWhenObjectIsNotNull()
     {
         object obj1 = null;
 
         Assert.Throws<AssertException>(() =>
         {
             DomainAssert.IsNotNull(obj1, "Object must not be null");
+        });
+    }
+
+    [Test]
+    public void IsTrue_ShouldNotThrowWhenConditionIsTrue()
+    {
+        Assert.DoesNotThrow(() =>
+        {
+            DomainAssert.IsTrue(1 == 1, "Condition must be true");
+        });
+    }
+
+    [Test]
+    public void IsTrue_ShouldThrowWhenConditionIsNotTrue()
+    {
+        Assert.Throws<AssertException>(() =>
+        {
+            DomainAssert.IsTrue(1 == 2, "Condition must be true");
         });
     }
 }
