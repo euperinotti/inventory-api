@@ -13,6 +13,9 @@ builder.Services.AddDbContext<PostgresDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+AuthenticationMiddleware authenticationMiddleware = new AuthenticationMiddleware();
+authenticationMiddleware.Configure(builder.Services, builder.Configuration);
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
