@@ -38,9 +38,9 @@ public class UserBO : AbstractEntityBO<long?>
 
     private void Validate()
     {
-        Assert.IsNotNull(Name, "User must have a name");
-        Assert.IsNotNull(Email, "User must have an email");
-        Assert.IsNullOrWhiteSpace(Password, "User must have password");
+        Assert.IsNotNullOrWhiteSpace(Name, "User must have a name");
+        Assert.IsNotNullOrWhiteSpace(Email, "User must have an email");
+        Assert.IsNotNullOrWhiteSpace(Password, "User must have password");
     }
 
     public void Update(UserBO bo)
