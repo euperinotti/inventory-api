@@ -1,4 +1,5 @@
 ﻿using Api.Domain.Assertions;
+using Api.Infra.Validators;
 
 namespace Api.Domain.Entities;
 
@@ -41,6 +42,9 @@ public class UserBO : AbstractEntityBO<long?>
         Assert.IsNotNullOrWhiteSpace(Name, "User must have a name");
         Assert.IsNotNullOrWhiteSpace(Email, "User must have an email");
         Assert.IsNotNullOrWhiteSpace(Password, "User must have password");
+
+        PasswordValidator validator = new PasswordValidator();
+        validator.Validate(Password);
     }
 
     public void Update(UserBO bo)
