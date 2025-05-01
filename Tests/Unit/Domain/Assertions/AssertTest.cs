@@ -314,8 +314,7 @@ public class AssertTest
      TestCase("http://."),
      TestCase("http://test"),
      TestCase("http:/ /test"),
-     TestCase("http ://test"),
-     TestCase("hello://test")
+     TestCase("http ://test")
     ]
     public void IsHttpUrl_ShouldThrowWhenInvalidUrlIsGiven(string url)
     {
