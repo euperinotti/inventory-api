@@ -79,6 +79,15 @@ public class SupplierBOTests
     }
 
     [Test]
+    public void Constructor_ShouldCreateClassInstanceCorrectly()
+    {
+        Assert.DoesNotThrow(() =>
+        {
+            new SupplierBO(1, "Eric Kong", "48088429000109", "Address", "nlc6pocdlnk@gmail.com", DateTime.Now, DateTime.Now);
+        });
+    }
+
+    [Test]
     public void Update_ShouldUpdateEntityFields()
     {
         SupplierBO supplier1 = new SupplierBO(1, "Eric Kong", "39875718000167", "Address", "nlc6pocdlnk@gmail.com", DateTime.Now, DateTime.Now.AddDays(-1));
