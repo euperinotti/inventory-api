@@ -1,5 +1,6 @@
 ﻿using Api.Domain.Entities;
 using Api.Domain.Exceptions;
+using Tests.Unit.Domain.Assertions;
 
 namespace Tests.Unit.Domain.Entities;
 
@@ -80,7 +81,7 @@ public class SupplierBOTests
     [Test]
     public void Update_ShouldUpdateEntityFields()
     {
-        SupplierBO supplier1 = new SupplierBO(1, "Eric Kong", "39875718000167", "Address", "nlc6pocdlnk@gmail.com", DateTime.Now, DateTime.Now);
+        SupplierBO supplier1 = new SupplierBO(1, "Eric Kong", "39875718000167", "Address", "nlc6pocdlnk@gmail.com", DateTime.Now, DateTime.Now.AddDays(-1));
         SupplierBO supplier2 = new SupplierBO(2, "MamadouTao", "48088429000109", "Address", "kv5sp2vkhpu@gmail.com", DateTime.Now, DateTime.Now);
 
         supplier1.Update(supplier2);
@@ -89,5 +90,6 @@ public class SupplierBOTests
         Assert.That(supplier2.Cnpj, Is.EqualTo(supplier1.Cnpj));
         Assert.That(supplier2.Address, Is.EqualTo(supplier1.Address));
         Assert.That(supplier2.Contact, Is.EqualTo(supplier1.Contact));
+        Assert.That(DateTime.Now.Day, Is.EqualTo(supplier1.UpdatedAt.Day));
     }
 }

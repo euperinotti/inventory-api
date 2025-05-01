@@ -62,6 +62,7 @@ public class SupplierBO : AbstractEntityBO<long?>
         Address = bo.Address;
         Contact = bo.Contact;
 
+        UpdatedAtNow();
         Validate();
     }
 }
