@@ -1,5 +1,6 @@
 ﻿using System;
 using Api.Domain.Assertions;
+using Api.Infra.Validators;
 
 namespace Api.Domain.Entities;
 public class SupplierBO : AbstractEntityBO<long?>
@@ -46,9 +47,12 @@ public class SupplierBO : AbstractEntityBO<long?>
 
     private void Validate()
     {
-        Assert.IsNullOrWhiteSpace(Name, "Supplier name is required");
-        Assert.IsNullOrWhiteSpace(Contact, "Supplier contact is required");
-        Assert.IsNullOrWhiteSpace(Cnpj, "Supplier CNPJ is required");
+        Assert.IsNotNullOrWhiteSpace(Name, "Supplier name is required");
+        Assert.IsNotNullOrWhiteSpace(Contact, "Supplier contact is required");
+        Assert.IsNotNullOrWhiteSpace(Cnpj, "Supplier CNPJ is required");
+
+        CnpjValidator cnpjValidator = new CnpjValidator();
+        cnpjValidator.Validate(Cnpj);
     }
 
     public void Update(SupplierBO bo)

@@ -60,11 +60,20 @@ public class SupplierBOTests
     }
 
     [Test]
+    public void Constructor_ShouldThrowIfCnpjHasInvalidFormat()
+    {
+        Assert.Throws<ValidationException>(() =>
+        {
+            new SupplierBO(1, "Eric Kong", "61264680887", "Address", "nlc6pocdlnk@gmail.com", DateTime.Now, DateTime.Now);
+        });
+    }
+
+    [Test]
     public void Constructor_ShouldThrowIfCnpjIsInvalid()
     {
-        Assert.Throws<AssertException>(() =>
+        Assert.Throws<ValidationException>(() =>
         {
-            new SupplierBO(1, "Eric Kong", "61264680887", "Address", "     ", DateTime.Now, DateTime.Now);
+            new SupplierBO(1, "Eric Kong", "61264680887111", "Address", "nlc6pocdlnk@gmail.com", DateTime.Now, DateTime.Now);
         });
     }
 }
