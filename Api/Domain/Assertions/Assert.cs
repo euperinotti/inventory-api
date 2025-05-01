@@ -64,6 +64,16 @@ public static class Assert
         throw new AssertException(message);
     }
 
+    public static void IsNotNullOrWhiteSpace(string value, string message)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            return;
+        }
+
+        throw new AssertException(message);
+    }
+
     public static void IsGreaterThan<T>(T value, T limit, string message) where T : IComparable<T>
     {
         if (value.CompareTo(limit) > 0)
