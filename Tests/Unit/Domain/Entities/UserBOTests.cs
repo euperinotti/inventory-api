@@ -112,4 +112,18 @@ public class UserBOTests
             new UserBO(1, "Eric Kong", "123", "abcDEFGH1!", DateTime.Now, DateTime.Now);
         });
     }
+
+    [Test]
+    public void Update_ShouldUpdateEntityFields()
+    {
+        UserBO user1 = new UserBO(1, "Eric Kong", "123", "abcDEFGH1!", DateTime.Now, DateTime.Now.AddDays(-5));
+        UserBO user2 = new UserBO(2, "MamadouTao", "123", "abcDEFGH1!", DateTime.Now, DateTime.Now);
+
+        user1.Update(user2);
+
+        Assert.That(user2.Name, Is.EqualTo(user1.Name));
+        Assert.That(user2.Email, Is.EqualTo(user1.Email));
+        Assert.That(user2.Password, Is.EqualTo(user1.Password));
+        Assert.That(DateTime.Now.Day, Is.EqualTo(user1.UpdatedAt.Day));
+    }
 }

@@ -10,7 +10,7 @@ public class UserBO : AbstractEntityBO<long?>
     private string _password;
 
     public UserBO(long? id, string name, string email, string password, DateTime createdAt, DateTime updatedAt) :
-        base(id, DateTime.Now, DateTime.Now)
+        base(id, createdAt, updatedAt)
     {
         Name = name;
         Email = email;
@@ -50,6 +50,8 @@ public class UserBO : AbstractEntityBO<long?>
     public void Update(UserBO bo)
     {
         Name = bo.Name;
+
+        UpdatedAtNow();
     }
 
     public void ResetPassword(string newPassword)
