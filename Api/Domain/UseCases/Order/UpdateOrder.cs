@@ -22,7 +22,7 @@ public class UpdateOrder
         OrderBO bo = OrderMapper.ToBO(orderDto);
         OrderBO newBO = OrderMapper.ToBO(dto);
 
-        bo.UpdateOrder(newBO);
+        bo.UpdateOrder(newBO.Status, newBO.Items);
         bo.CalculateAmount();
 
         bo = _orderRepository.Update(bo);

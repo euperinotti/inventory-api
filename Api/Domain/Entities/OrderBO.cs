@@ -32,12 +32,13 @@ public class OrderBO : AbstractEntityBO<long?>
     {
         Assert.IsNotNull(Supplier, "Order must have a supplier");
         Assert.IsGreaterThanOrEqual(Total, 0, "Total must be greater than zero");
+        Assert.IsLessThan(CreatedAt, DateTime.Now, "Order cannot be created in the future");
     }
 
-    public void UpdateOrder(OrderBO bo)
+    public void UpdateOrder(OrderStatus status, List<OrderItemBO> items)
     {
-        Status = bo.Status;
-        Items = bo.Items;
+        Status = status;
+        Items = items;
 
         UpdatedAtNow();
         CalculateAmount();
@@ -75,6 +76,7 @@ public class OrderBO : AbstractEntityBO<long?>
 
     public void CalculateAmount()
     {
+        Total = decimal.Zero;
         Items.ForEach(e => Total += e.Quantity * e.UnitPrice);
     }
 
