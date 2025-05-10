@@ -30,7 +30,7 @@ public class ProductBO
 
     private void Validate()
     {
-        Assert.IsNullOrWhiteSpace(Name, "Product name is required");
+        Assert.IsNotNullOrWhiteSpace(Name, "Product name is required");
         Assert.IsGreaterThan(Price, 0, "Product price must be greater than zero");
         Assert.IsGreaterThanOrEqual(Quantity, 0, "Product quantity must be greater than or equal to zero");
         Assert.IsHttpUrl(ImageURL, "Product image URL is invalid");
