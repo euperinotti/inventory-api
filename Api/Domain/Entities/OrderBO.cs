@@ -5,18 +5,16 @@ namespace Api.Domain.Entities;
 
 public class OrderBO : AbstractEntityBO<long?>
 {
-    private DateTime _date;
     private OrderStatus _status;
     private SupplierBO _supplier;
     private List<OrderItemBO> _items;
     private decimal _total;
 
-    public OrderBO(long? id, DateTime date, OrderStatus status, List<OrderItemBO> items, decimal total,
+    public OrderBO(long? id, OrderStatus status, List<OrderItemBO> items, decimal total,
         SupplierBO supplier, DateTime createdAt,
         DateTime updatedAt) :
         base(id, createdAt, updatedAt)
     {
-        Date = date;
         Status = status;
         Items = items;
         Total = total;
@@ -25,7 +23,6 @@ public class OrderBO : AbstractEntityBO<long?>
         Validate();
     }
 
-    public DateTime Date { get => _date; private set => _date = value; }
     public OrderStatus Status { get => _status; private set => _status = value; }
     public SupplierBO Supplier { get => _supplier; private set => _supplier = value; }
     public List<OrderItemBO> Items { get => _items; private set => _items = value; }

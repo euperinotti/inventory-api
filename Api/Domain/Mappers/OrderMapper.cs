@@ -10,7 +10,6 @@ public static class OrderMapper
     {
         OrderDTO dto = new OrderDTO();
         dto.Id = bo.Id;
-        dto.Date = bo.Date;
         dto.Status = bo.Status;
         dto.Total = bo.Total;
         dto.Supplier = SupplierMapper.ToDTO(bo.Supplier);
@@ -26,7 +25,6 @@ public static class OrderMapper
         SupplierBO supplier = SupplierMapper.ToBO(dto.Supplier);
 
         return new OrderBO(dto.Id,
-            dto.Date,
             dto.Status,
             items,
             dto.Total,
