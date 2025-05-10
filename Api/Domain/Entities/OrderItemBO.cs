@@ -28,11 +28,6 @@ public class OrderItemBO : AbstractEntityBO<long?>
         Assert.IsGreaterThan(UnitPrice, 0, "Unit price must be greater than zero");
     }
 
-    public void UpdateItem(OrderItemBO item)
-    {
-        Quantity = item.Quantity;
-    }
-
     public void AddQuantity(int quantity)
     {
         Quantity += quantity;
