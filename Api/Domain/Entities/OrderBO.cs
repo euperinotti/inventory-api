@@ -78,10 +78,7 @@ public class OrderBO : AbstractEntityBO<long?>
 
     public void CalculateAmount()
     {
-        foreach (OrderItemBO item in Items)
-        {
-            Total += item.Quantity * item.UnitPrice;
-        }
+        Items.ForEach(e => Total += e.Quantity * e.UnitPrice);
     }
 
 }
