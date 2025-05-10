@@ -11,13 +11,15 @@ namespace Api.Domain.UseCases.User;
 public class SignIn
 {
     private readonly IUserRepository _repository;
+    private readonly IUserSessionRepository _sessionRepository;
     private readonly IEncrypter _encrypter;
     private readonly IEmailValidator _emailValidator;
     private readonly IJWTAuth _jwtAuth;
 
-    public SignIn(IUserRepository repository, IEncrypter encrypter, IEmailValidator emailValidator, IJWTAuth jwtAuth)
+    public SignIn(IUserRepository repository, IUserSessionRepository sessionRepository, IEncrypter encrypter, IEmailValidator emailValidator, IJWTAuth jwtAuth)
     {
         _repository = repository;
+        _sessionRepository = sessionRepository;
         _encrypter = encrypter;
         _emailValidator = emailValidator;
         _jwtAuth = jwtAuth;

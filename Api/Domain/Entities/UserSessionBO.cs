@@ -6,6 +6,7 @@ public class UserSessionBO : AbstractEntityBO<long?>
     public int Attempts { get; private set; }
     public DateTime LastAttemptAt { get; private set; }
     public UserBO User { get; private set; }
+    public bool Logged { get; private set; }
 
     public UserSessionBO(long? id, DateTime createdAt, int attempts, DateTime lastAttemptAt, UserBO user) :
         base(id, createdAt, createdAt)
