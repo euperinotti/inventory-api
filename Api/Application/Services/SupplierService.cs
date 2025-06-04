@@ -15,6 +15,27 @@ public class SupplierService
         _supplierRepository = supplierRepository;
     }
 
+    public List<SupplierDTO> FindAll()
+    {
+        FindSupplier usecase = new FindSupplier(_supplierRepository);
+
+        return usecase.Execute();
+    }
+
+    public SupplierDTO FindById(long id)
+    {
+        FindSupplier usecase = new FindSupplier(_supplierRepository);
+
+        return usecase.Execute(id);
+    }
+
+    public SupplierDTO Create(SupplierDTO dto)
+    {
+        CreateSupplier usecase = new CreateSupplier(_supplierRepository);
+
+        return usecase.Execute(dto);
+    }
+
     public SupplierDTO Update(SupplierDTO dto)
     {
         UpdateSupplier usecase = new UpdateSupplier(_supplierRepository, new CnpjValidator());
@@ -22,10 +43,10 @@ public class SupplierService
         return usecase.Execute(dto);
     }
 
-    public List<SupplierDTO> FindAll()
+    public void Delete(long id)
     {
-        FindSupplier usecase = new FindSupplier(_supplierRepository);
+        DeleteSupplier usecase = new DeleteSupplier(_supplierRepository);
 
-        return usecase.Execute();
+        usecase.Execute(id);
     }
 }
