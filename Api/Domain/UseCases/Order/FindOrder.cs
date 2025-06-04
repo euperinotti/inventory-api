@@ -22,4 +22,9 @@ public class FindOrder
 
         return OrderMapper.ToDTO(bo!);
     }
+
+    public List<OrderDTO> Execute()
+    {
+        return _orderRepository.FindAll().Select(OrderMapper.ToDTO).ToList();
+    }
 }

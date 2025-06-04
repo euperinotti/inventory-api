@@ -15,6 +15,11 @@ public class FindProduct
         _repository = repository;
     }
 
+    public List<ProductDTO> Execute()
+    {
+        return _repository.FindAll().Select(ProductMapper.ToDTO).ToList();
+    }
+
     public ProductDTO Execute(long productId)
     {
         ProductBO? bo = _repository.FindById(productId);
