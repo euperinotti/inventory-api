@@ -2,22 +2,18 @@ using Api.Domain.Assertions;
 
 namespace Api.Domain.Entities;
 
-public class ProductBO
+public class ProductBO : AbstractEntityBO<long?>
 {
-    public long? Id { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public decimal Price { get; private set; }
     public int Quantity { get; private set; }
     public string ImageURL { get; private set; }
-
-    // public HashSet<ProductAttributeBO> Attributes { get; private set; }
     public SupplierBO Supplier { get; private set; }
 
     public ProductBO(long? id, string name, string description, decimal price, int quantity, string imageUrl,
-        SupplierBO supplier)
+        SupplierBO supplier) : base(id, DateTime.Now, DateTime.Now)
     {
-        Id = id;
         Name = name;
         Description = description;
         Price = price;
