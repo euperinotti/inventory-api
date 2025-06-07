@@ -1,4 +1,6 @@
 ﻿using Api.Domain.Dto.Request;
+using Api.Domain.Dto.Response;
+using Api.Domain.Mappers;
 using Api.Domain.Repository;
 using Api.Domain.UseCases.Order;
 
@@ -43,10 +45,11 @@ public class OrderService
         return usecase.Execute(dto);
     }
 
-    public CancelOrderDTO CancelOrder(long id)
+    public OrderDTO CancelOrder(long id)
     {
         CancelOrder usecase = new CancelOrder(_repository);
+        OrderDTO dto = OrderMapper.ToDTO(usecase.Execute(id));
 
-        return usecase.Execute(id);
+        return dto;
     }
 }

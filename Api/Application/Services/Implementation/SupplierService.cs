@@ -1,12 +1,13 @@
-﻿using Api.Domain.Dto;
+﻿using Api.Application.Services.Interfaces;
+using Api.Domain.Dto;
 using Api.Domain.Dto.Request;
 using Api.Domain.Repository;
 using Api.Domain.UseCases.Supplier;
 using Api.Infra.Validators;
 
-namespace Api.Application.Services;
+namespace Api.Application.Services.Implementation;
 
-public class SupplierService
+public class SupplierService : ISupplierService
 {
     private readonly ISupplierRepository _supplierRepository;
 

@@ -1,10 +1,11 @@
-﻿using Api.Domain.Dto.Request;
+﻿using Api.Application.Services.Interfaces;
+using Api.Domain.Dto.Request;
 using Api.Domain.Repository;
 using Api.Domain.UseCases.Product;
 
-namespace Api.Application.Services;
+namespace Api.Application.Services.Implementation;
 
-public class ProductService
+public class ProductService : IProductService
 {
     private readonly IProductRepository _repository;
     private readonly ISupplierRepository _supplierRepository;
