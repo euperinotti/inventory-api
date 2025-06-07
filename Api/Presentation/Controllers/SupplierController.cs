@@ -1,5 +1,5 @@
-﻿using Api.Domain.Repository;
-using Api.Presentation.Dtos.Supplier;
+﻿using Api.Application.Services.Interfaces;
+using Api.Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Presentation.Controllers;
@@ -9,23 +9,51 @@ namespace Api.Presentation.Controllers;
 public class SupplierController : Controller
 {
     private readonly ILogger<SupplierController> _logger;
-    private readonly ISupplierRepository _repository;
+    private readonly ISupplierService _service;
 
-    [HttpGet]
-    [Route("/")]
-    public ActionResult<IEnumerator<SupplierResponseDTO>> GetAll()
+    public SupplierController(ILogger<SupplierController> logger, ISupplierService service)
     {
-        // List<SupplierResponseDTO> response = _repository.FindAll();
-
-        return Ok();
+        _logger = logger;
+        _service = service;
     }
 
     [HttpGet]
-    [Route("/ping")]
-    public ActionResult<IEnumerator<SupplierResponseDTO>> Ping()
+    public ActionResult<IEnumerator<SupplierDTO>> GetAll()
     {
-        // List<SupplierResponseDTO> response = _repository.FindAll();
+        List<SupplierDTO> response = _service.FindAll();
 
-        return Ok(new { Pong = true });
+        return Ok(response);
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<SupplierDTO> GetById(int id)
+    {
+        SupplierDTO response = _service.FindById(id);
+
+        return Ok(response);
+    }
+
+    [HttpPost]
+    public ActionResult<SupplierDTO> Create(SupplierDTO dto)
+    {
+        SupplierDTO response = _service.Create(dto);
+
+        return Ok(response);
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult<SupplierDTO> Update(SupplierDTO dto)
+    {
+        SupplierDTO response = _service.Update(dto);
+
+        return Ok(response);
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult Delete(int id)
+    {
+        _service.Delete(id);
+
+        return NoContent();
     }
 }
