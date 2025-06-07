@@ -43,9 +43,9 @@ public class OrderService
         return usecase.Execute(dto);
     }
 
-    public void Delete(long id)
+    public CancelOrderDTO CancelOrder(long id)
     {
-        DeleteOrder usecase = new DeleteOrder(_repository);
+        CancelOrder usecase = new CancelOrder(_repository);
 
         return usecase.Execute(id);
     }

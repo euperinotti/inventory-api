@@ -80,4 +80,15 @@ public class OrderBO : AbstractEntityBO<long?>
         Items.ForEach(e => Total += e.Quantity * e.UnitPrice);
     }
 
+    public void Cancel()
+    {
+        if (Status is OrderStatus.Shipped or OrderStatus.Done)
+        {
+            throw new Exception("Cannot Cancel an already shipped or done order");
+        }
+
+        Status = OrderStatus.Canceled;
+        UpdatedAtNow();
+    }
+
 }
